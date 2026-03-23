@@ -1,0 +1,59 @@
+# ================================
+# HAPPINESS & CO — .gitignore
+# ================================
+
+# -------  Sistema operativo -------
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS (por si acaso)
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ------- Java / IDE -------
+# Archivos compilados
+*.class
+*.jar
+*.war
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+out/
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# NetBeans
+nbproject/
+build/
+dist/
+
+# VS Code
+.vscode/
+
+# ------- Base de datos -------
+# Archivos locales de MySQL Workbench
+*.mwb.bak
+*.mwb~
+
+# ------- General -------
+# Archivos temporales
+*.tmp
+*.temp
+*.log
+*.bak
+*.swp
+*.swo
+
+# Archivos comprimidos de entrega (el ZIP final no va al repo)
+*.zip
+*.rar

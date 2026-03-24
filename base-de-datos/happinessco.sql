@@ -14,28 +14,28 @@ USE happinessco;
 -- ========================================================================
 
 CREATE TABLE IF NOT EXISTS usuarios (
-    id_usuarios            INT AUTO_INCREMENT,
+    id_usuario             INT AUTO_INCREMENT,
     nombre   		       VARCHAR(100) NOT NULL,
     email    		       VARCHAR(150) NOT NULL UNIQUE,
     `password`  		   VARCHAR(255) NOT NULL,
-    CONSTRAINT pk_usuarios PRIMARY KEY(id_usuarios)
+    CONSTRAINT pk_usuarios PRIMARY KEY(id_usuario)
 );
 
 CREATE TABLE IF NOT EXISTS eventos (
-    id_eventos            INT AUTO_INCREMENT,
+    id_evento             INT AUTO_INCREMENT,
     fecha       		  DATE NOT NULL,
     titulo      		  VARCHAR(200) NOT NULL,
     ubicacion   		  VARCHAR(200) NOT NULL,
     descripcion 		  TEXT NOT NULL,
-    CONSTRAINT pk_eventos PRIMARY KEY(id_eventos)
+    CONSTRAINT pk_eventos PRIMARY KEY(id_evento)
 );
 
 CREATE TABLE IF NOT EXISTS galerias (
-    id_galerias            INT AUTO_INCREMENT,
+    id_galeria            INT AUTO_INCREMENT,
     titulo      		   VARCHAR(200) NOT NULL,
     id_evento   		   INT NOT NULL,
-    CONSTRAINT pk_galerias PRIMARY KEY (id_galerias),
-    CONSTRAINT fk_galeven FOREIGN KEY(id_evento) REFERENCES eventos(id_eventos) ON DELETE CASCADE
+    CONSTRAINT pk_galerias PRIMARY KEY (id_galeria),
+    CONSTRAINT fk_galeven FOREIGN KEY(id_evento) REFERENCES eventos(id_evento) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS imagenes_galerias (
@@ -44,28 +44,37 @@ CREATE TABLE IF NOT EXISTS imagenes_galerias (
     imagen               VARCHAR(500) NOT NULL,
     id_galerias          INT NOT NULL,
     CONSTRAINT pk_imagenes_galerias PRIMARY KEY (id_imagenes),
-    CONSTRAINT fk_imagal FOREIGN KEY(id_galerias) REFERENCES galerias(id_galerias) ON DELETE CASCADE
+    CONSTRAINT fk_imagal FOREIGN KEY(id_galeria) REFERENCES galerias(id_galeria) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS favoritos (
-    id_usuarios  			INT NOT NULL,
-    id_eventos   			INT NOT NULL,
-    CONSTRAINT pk_favoritos PRIMARY KEY(id_usuarios, id_eventos),
-    CONSTRAINT fk_favusuar FOREIGN KEY(	id_usuarios) REFERENCES usuarios(id_usuarios) ON DELETE CASCADE,
-    CONSTRAINT fk_favevent FOREIGN KEY(	id_eventos) REFERENCES eventos(id_eventos) ON DELETE CASCADE
+    id_usuario  			INT NOT NULL,
+    id_evento   			INT NOT NULL,
+    CONSTRAINT pk_favoritos PRIMARY KEY(id_usuario, id_evento),
+    CONSTRAINT fk_favusuar FOREIGN KEY(	id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE,
+    CONSTRAINT fk_favevent FOREIGN KEY(	id_evento) REFERENCES eventos(id_evento) ON DELETE CASCADE
 );
 
 -- ============================================================
+-- INSERCIÓN DE DATOS: USUARIOS
+-- ============================================================
+
+INSERT INTO usuarios (nombre, email, `password`) VALUES
+('Jhonny Ramírez', 'jhonny.ramirez@gmail.com', 'mylittlepony'),
+('Delio Toliva',   'delio.toliva@gmail.com',   'amoeclipse'),
+('Mario Álvarez',  'mario.alvarez@gmail.com',  'soyhacker');
+
+-- ============================================================
 -- INSERCIÓN DE DATOS: EVENTOS
--- Fechas obligatorias del enunciado:
+-- Fechas obligatorias :
 --   Historial: 01-01-2026, 12-01-2026, 24-01-2026
 --   Próximos:  05-06-2026, 15-06-2026, 25-06-2026
--- Fechas libres (eventos musicales):
+-- Fechas libres (usadas para eventos musicales):
 --   Historial: 25-08-2025
 --   Próximo:   24-10-2026
 -- ============================================================
 
-INSERT INTO Eventos (fecha, titulo, ubicacion, descripcion) VALUES
+INSERT INTO eventos (fecha, titulo, ubicacion, descripcion) VALUES
 -- Eventos del historial (pasados, fecha corte 01-05-2026)
 ('2026-01-01', 'Azulejos, Vaques y el Nano - The Tile Project',
  'Oviedo, Espacio 451',
@@ -100,32 +109,25 @@ INSERT INTO Eventos (fecha, titulo, ubicacion, descripcion) VALUES
  'Gijón Arena',
  'Gira europea celebrando los 25 años de su álbum debut Not That Kind');
 
--- ============================================================
--- INSERCIÓN DE DATOS: USUARIOS
--- ============================================================
 
-INSERT INTO Usuarios (nombre, email, password) VALUES
-('Jhonny Ramírez', 'jhonny.ramirez@email.com', 'pass1234'),
-('Delio Toliva',   'delio.toliva@email.com',   'pass5678'),
-('Mario Álvarez',  'mario.alvarez@email.com',  'pass9012');
 
--- ============================================================
+-- ===================================================================================================
 -- INSERCIÓN DE DATOS: GALERÍAS (solo eventos del historial)
--- id_evento: 1=Tile, 2=Prision, 3=Final, 4=Karol
--- ============================================================
+-- id_evento: 1 = The Tile Project, 2  Prision IA, 3 = Final Four BCL, 4 = Mañana será bonito tour
+-- ===================================================================================================
 
-INSERT INTO Galerias (titulo, id_evento) VALUES
-('Galería The Tile Project',              1),
-('Galería Prisión IA Circo de Horrores',  2),
-('Galería Final Four BCL',                3),
-('Galería Mañana será bonito tour',       4);
+INSERT INTO galerias (titulo, id_evento) VALUES
+('Galería: The Tile Project',              1),
+('Galería: Prisión IA',  				   2),
+('Galería: Final Four BCL',                3),
+('Galería: Mañana será bonito tour',       4);
 
 -- ============================================================
 -- INSERCIÓN DE DATOSINSERCIÓN DE DATOS: IMÁGENES DE GALERÍAS
 -- id_galeria: 1=Tile, 2=Prision, 3=Final, 4=Karol
 -- ============================================================
 
-INSERT INTO Imagenes_Galerias (titulo, imagen, id_galeria) VALUES
+INSERT INTO imagenes_galerias (titulo, imagen, id_galerias) VALUES
 -- Galería Tile (id_galeria = 1)
 ('Azulejos asturianos I',   'assets/images/galerias-historial/galeria-tile/img1.jpg',   1),
 ('Azulejos asturianos II',  'assets/images/galerias-historial/galeria-tile/img2.jpg',   1),

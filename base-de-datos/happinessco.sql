@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
     id_usuarios            INT AUTO_INCREMENT,
     nombre   		       VARCHAR(100) NOT NULL,
     email    		       VARCHAR(150) NOT NULL UNIQUE,
-    password_hash		   VARCHAR(255) NOT NULL,
+    `password`  		   VARCHAR(255) NOT NULL,
     CONSTRAINT pk_usuarios PRIMARY KEY(id_usuarios)
 );
 
@@ -35,26 +35,28 @@ CREATE TABLE IF NOT EXISTS galerias (
     titulo      		   VARCHAR(200) NOT NULL,
     id_evento   		   INT NOT NULL,
     CONSTRAINT pk_galerias PRIMARY KEY (id_galerias),
-    CONSTRAINT fk_galeven FOREIGN KEY (id_evento) REFERENCES eventos(id_eventos) ON DELETE CASCADE
+    CONSTRAINT fk_galeven FOREIGN KEY(id_evento) REFERENCES eventos(id_eventos) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS imagenes_galerias (
     id_imagenes          INT AUTO_INCREMENT,
-    titulo      VARCHAR(200) NOT NULL,
-    imagen      VARCHAR(500) NOT NULL,
-    id_galeria  INT NOT NULL,
-    FOREIGN KEY (id_galeria) REFERENCES Galerias(id)
-        ON DELETE CASCADE
+    titulo				 VARCHAR(200) NOT NULL,
+    imagen               VARCHAR(500) NOT NULL,
+    id_galerias          INT NOT NULL,
+    CONSTRAINT pk_imagenes_galerias PRIMARY KEY (id_imagenes),
+    CONSTRAINT fk_imagal FOREIGN KEY(id_galerias) REFERENCES galerias(id_galerias) ON DELETE CASCADE
 );
 
-CREATE TABLE favoritos (
-    id_usuarios  INT NOT NULL,
-    id_eventos   INT NOT NULL,
-    
+CREATE TABLE IF NOT EXISTS favoritos (
+    id_usuarios  			INT NOT NULL,
+    id_eventos   			INT NOT NULL,
+    CONSTRAINT pk_favoritos PRIMARY KEY(id_usuarios, id_eventos),
+    CONSTRAINT fk_favusuar FOREIGN KEY(	id_usuarios) REFERENCES usuarios(id_usuarios) ON DELETE CASCADE,
+    CONSTRAINT fk_favevent FOREIGN KEY(	id_eventos) REFERENCES eventos(id_eventos) ON DELETE CASCADE
 );
 
 -- ============================================================
--- DATOS: EVENTOS
+-- INSERCIÓN DE DATOS: EVENTOS
 -- Fechas obligatorias del enunciado:
 --   Historial: 01-01-2026, 12-01-2026, 24-01-2026
 --   Próximos:  05-06-2026, 15-06-2026, 25-06-2026
@@ -99,7 +101,7 @@ INSERT INTO Eventos (fecha, titulo, ubicacion, descripcion) VALUES
  'Gira europea celebrando los 25 años de su álbum debut Not That Kind');
 
 -- ============================================================
--- DATOS: USUARIOS
+-- INSERCIÓN DE DATOS: USUARIOS
 -- ============================================================
 
 INSERT INTO Usuarios (nombre, email, password) VALUES
@@ -108,7 +110,7 @@ INSERT INTO Usuarios (nombre, email, password) VALUES
 ('Mario Álvarez',  'mario.alvarez@email.com',  'pass9012');
 
 -- ============================================================
--- DATOS: GALERÍAS (solo eventos del historial)
+-- INSERCIÓN DE DATOS: GALERÍAS (solo eventos del historial)
 -- id_evento: 1=Tile, 2=Prision, 3=Final, 4=Karol
 -- ============================================================
 
@@ -119,7 +121,7 @@ INSERT INTO Galerias (titulo, id_evento) VALUES
 ('Galería Mañana será bonito tour',       4);
 
 -- ============================================================
--- DATOS: IMÁGENES DE GALERÍAS
+-- INSERCIÓN DE DATOSINSERCIÓN DE DATOS: IMÁGENES DE GALERÍAS
 -- id_galeria: 1=Tile, 2=Prision, 3=Final, 4=Karol
 -- ============================================================
 

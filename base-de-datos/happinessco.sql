@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS imagenes_galerias (
     id_imagenes          INT AUTO_INCREMENT,
     titulo				 VARCHAR(200) NOT NULL,
     imagen               VARCHAR(500) NOT NULL,
-    id_galerias          INT NOT NULL,
+    id_galeria          INT NOT NULL,
     CONSTRAINT pk_imagenes_galerias PRIMARY KEY (id_imagenes),
     CONSTRAINT fk_imagal FOREIGN KEY(id_galeria) REFERENCES galerias(id_galeria) ON DELETE CASCADE
 );
@@ -189,31 +189,46 @@ INSERT INTO favoritos (id_usuario, id_evento) VALUES
 
 -- Vista 1: Galerías anteriores al 28-02-2026
 -- (eventos cuya fecha es anterior a 28-02-2026)
-CREATE VIEW vista_galerias_anteriores AS
-    SELECT g.id, g.titulo, g.id_evento, e.fecha, e.titulo AS titulo_evento
-    FROM Galerias g
-    JOIN Eventos e ON g.id_evento = e.id
-    WHERE e.fecha < '2026-02-28';
+
+CREATE VIEW galerias_anteriores_fecha_actual AS
+    SELECT galerias.*
+    FROM galerias, eventos
+    WHERE (eventos.fecha) < "2026-02-28" and (galerias.id_evento = eventos.id_evento);
+
+-- Visualizamos la vista
+SELECT * FROM galerias_anteriores_fecha_actual;
 
 -- Vista 2: Eventos favoritos del usuario 1 (Jhonny Ramírez)
 CREATE VIEW vista_favoritos_usuario1 AS
-    SELECT e.id, e.fecha, e.titulo, e.ubicacion, e.descripcion
-    FROM Favoritos f
-    JOIN Eventos e ON f.id_evento = e.id
-    WHERE f.id_usuario = 1;
-
+    SELECT eventos.*
+    FROM eventos, favoritos
+    WHERE (id_usuario = 1) and (eventos.id_evento = favoritos.id_evento);
+    
+-- Visualizamos la vista
+SELECT * FROM vista_favoritos_usuario1;
+    
 -- Vista 3: Imágenes de la galería del evento del 12-01-2026
 -- El evento del 12-01-2026 tiene id = 2 (Prision IA)
 -- La galería de ese evento tiene id = 2
+
 CREATE VIEW vista_imagenes_galeria_prision AS
-    SELECT ig.id, ig.titulo, ig.imagen, ig.id_galeria
-    FROM Imagenes_Galerias ig
-    WHERE ig.id_galeria = 2;
+    SELECT imagenes_galerias.*
+    FROM imagenes_galerias, galerias
+    WHERE (galerias.id_evento = 2) and (imagenes_galerias.id_galeria = galerias.id_galeria);
+
+-- Visualizamos la vista
+SELECT * FROM vista_imagenes_galeria_prision;
 
 -- Vista 4: Eventos favoritos del usuario 2 (Delio Toliva) posteriores al 28-02-2026
 CREATE VIEW vista_favoritos_usuario2_futuros AS
-    SELECT e.id, e.fecha, e.titulo, e.ubicacion, e.descripcion
-    FROM Favoritos f
-    JOIN Eventos e ON f.id_evento = e.id
-    WHERE f.id_usuario = 2
-      AND e.fecha > '2026-02-28';
+    SELECT eventos.*
+    FROM eventos, favoritos
+    WHERE (favoritos.id_usuario = 2) and (eventos.fecha > "2026-02-28") and (eventos.id_evento = favoritos.id_evento);
+    
+-- Visualizamos la vista
+SELECT * FROM vista_favoritos_usuario2_futuros;
+
+      
+      
+      
+      

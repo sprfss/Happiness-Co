@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS eventos (
 );
 
 CREATE TABLE IF NOT EXISTS galerias (
-    id_galeria            INT AUTO_INCREMENT,
+    id_galeria             INT AUTO_INCREMENT,
     titulo      		   VARCHAR(200) NOT NULL,
     id_evento   		   INT NOT NULL,
     CONSTRAINT pk_galerias PRIMARY KEY (id_galeria),
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS favoritos (
 -- ============================================================
 
 INSERT INTO usuarios (nombre, email, `password`) VALUES
-('Jhonny Ramírez', 'jhonny.ramirez@gmail.com', 'mylittlepony'),
+('Johnny Ramírez', 'johnny.ramirez@gmail.com', 'mylittlepony'),
 ('Delio Toliva',   'delio.toliva@gmail.com',   'amoeclipse'),
 ('Mario Álvarez',  'mario.alvarez@gmail.com',  'soyhacker');
 
@@ -85,7 +85,7 @@ INSERT INTO eventos (fecha, titulo, ubicacion, descripcion) VALUES
  'Show que combina teatro, circo y efectos especiales'),
 
 ('2026-01-24', 'Final Four - Basketball Champions League',
- 'Badalona, Olímpic Arena',
+ 'Badalona, Olimpic Arena',
  'Final del mejor baloncesto europeo'),
 
 ('2025-08-25', 'Mañana será bonito tour - Karol G',
@@ -108,8 +108,6 @@ INSERT INTO eventos (fecha, titulo, ubicacion, descripcion) VALUES
 ('2026-10-24', '#NTKTOUR2026 - Anastacia',
  'Gijón Arena',
  'Gira europea celebrando los 25 años de su álbum debut Not That Kind');
-
-
 
 -- ===================================================================================================
 -- INSERCIÓN DE DATOS: GALERÍAS (solo eventos del historial)

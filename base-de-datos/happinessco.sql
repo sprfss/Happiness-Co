@@ -121,7 +121,7 @@ INSERT INTO galerias (titulo, id_evento) VALUES
 ('Galería: Mañana será bonito tour',       4);
 
 -- ============================================================
--- INSERCIÓN DE DATOSINSERCIÓN DE DATOS: IMÁGENES DE GALERÍAS
+-- INSERCIÓN DE DATOS: IMÁGENES DE GALERÍAS
 -- id_galeria: 1=Tile, 2=Prision, 3=Final, 4=Karol
 -- ============================================================
 

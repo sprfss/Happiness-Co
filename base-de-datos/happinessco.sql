@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS galerias (
     titulo      		   VARCHAR(200) NOT NULL,
     id_evento   		   INT NOT NULL,
     CONSTRAINT pk_galerias PRIMARY KEY (id_galeria),
-    CONSTRAINT fk_galeven FOREIGN KEY(id_evento) REFERENCES eventos(id_evento) ON DELETE CASCADE
+    CONSTRAINT fk_galeven  FOREIGN KEY(id_evento) REFERENCES eventos(id_evento) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS imagenes_galerias (
@@ -51,8 +51,8 @@ CREATE TABLE IF NOT EXISTS favoritos (
     id_usuario  			INT NOT NULL,
     id_evento   			INT NOT NULL,
     CONSTRAINT pk_favoritos PRIMARY KEY(id_usuario, id_evento),
-    CONSTRAINT fk_favusuar FOREIGN KEY(	id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE,
-    CONSTRAINT fk_favevent FOREIGN KEY(	id_evento) REFERENCES eventos(id_evento) ON DELETE CASCADE
+    CONSTRAINT fk_favusuar  FOREIGN KEY(	id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE,
+    CONSTRAINT fk_favevent  FOREIGN KEY(	id_evento) REFERENCES eventos(id_evento) ON DELETE CASCADE
 );
 
 -- ============================================================
@@ -125,50 +125,61 @@ INSERT INTO galerias (titulo, id_evento) VALUES
 -- id_galeria: 1=Tile, 2=Prision, 3=Final, 4=Karol
 -- ============================================================
 
-INSERT INTO imagenes_galerias (titulo, imagen, id_galerias) VALUES
+INSERT INTO imagenes_galerias (titulo, imagen, id_galeria) VALUES
 -- Galería Tile (id_galeria = 1)
-('Azulejos asturianos I',   'assets/images/galerias-historial/galeria-tile/img1.jpg',   1),
-('Azulejos asturianos II',  'assets/images/galerias-historial/galeria-tile/img2.jpg',   1),
-('Azulejos asturianos III', 'assets/images/galerias-historial/galeria-tile/img3.jpg',   1),
+('Azulejos, Vaques y el Nano', 'assets/images/galerias-historial/galeria-tile/azulejos.webp', 1),
+('Baquetas', 'assets/images/galerias-historial/galeria-tile/baquetas.webp', 1),
+('Prestame po la vida', 'assets/images/galerias-historial/galeria-tile/prestame-po-la-vida.webp', 1),
+('Magic Alonso', 'assets/images/galerias-historial/galeria-tile/magic-alonso.webp', 1),
+('Ye lo que hay', 'assets/images/galerias-historial/galeria-tile/ye-lo-que-hay.webp', 1),
+
 
 -- Galería Prisión IA (id_galeria = 2)
-('Circo de los Horrores I',   'assets/images/galerias-historial/galeria-prision/img1.jpg', 2),
-('Circo de los Horrores II',  'assets/images/galerias-historial/galeria-prision/img2.jpg', 2),
-('Circo de los Horrores III', 'assets/images/galerias-historial/galeria-prision/img3.jpg', 2),
+('Actuación inicial', 'assets/images/galerias-historial/galeria-prision/act.webp', 2),
+('Acrobacias', 'assets/images/galerias-historial/galeria-prision/gym.webp', 2),
+('Jaula', 'assets/images/galerias-historial/galeria-prision/jail.webp', 2),
+('Salto de motos', 'assets/images/galerias-historial/galeria-prision/motos.webp', 2),
+('Juego de Espejos', 'assets/images/galerias-historial/galeria-prision/mirror.webp', 2),
 
 -- Galería Final Four (id_galeria = 3)
-('Final Four BCL I',   'assets/images/galerias-historial/galeria-final/img1.jpg', 3),
-('Final Four BCL II',  'assets/images/galerias-historial/galeria-final/img2.jpg', 3),
-('Final Four BCL III', 'assets/images/galerias-historial/galeria-final/img3.jpg', 3),
+('A punto de encestar', 'assets/images/galerias-historial/galeria-final/boca.webp', 3),
+('Coraje', 'assets/images/galerias-historial/galeria-final/grito.webp', 3),
+('Rotura de cadera', 'assets/images/galerias-historial/galeria-final/regate.webp', 3),
+('Ganadores', 'assets/images/galerias-historial/galeria-final/final.webp', 3),
+('Desde la grada', 'assets/images/galerias-historial/galeria-final/pista.webp', 3),
 
 -- Galería Karol G (id_galeria = 4)
-('Mañana será bonito I',   'assets/images/galerias-historial/galeria-karol/img1.jpg', 4),
-('Mañana será bonito II',  'assets/images/galerias-historial/galeria-karol/img2.jpg', 4),
-('Mañana será bonito III', 'assets/images/galerias-historial/galeria-karol/img3.jpg', 4);
+('Letras Bichota Season', 'assets/images/galerias-historial/galeria-karolg/bichota.webp', 4),
+('Plano del escenario', 'assets/images/galerias-historial/galeria-karolg/escenario.webp', 4),
+('Plano aéreo del show', 'assets/images/galerias-historial/galeria-karolg/espacial.webp', 4),
+('Karol despidiéndose', 'assets/images/galerias-historial/galeria-karolg/karol.webp', 4),
+('Coreografía', 'assets/images/galerias-historial/galeria-karolg/karol2.webp', 4);
 
 -- ============================================================
 -- DATOS: FAVORITOS
--- Usuarios: 1=Jhonny, 2=Delio, 3=Mario
+-- Usuarios: 1=Johnny, 2=Delio, 3=Mario
 -- Eventos:  1=Tile, 2=Prision, 3=Final, 4=Karol,
 --           5=Cleopatra, 6=Hannah, 7=Salmon, 8=Anastacia
 --
--- Jhonny → Hannah(6), Tile(1), Karol(4)
+-- Johnny → Hannah(6), Tile(1), Karol(4)
 -- Delio  → Salmon(7), Prision(2), Final(3)
 -- Mario  → Karol(4), Tile(1), Cleopatra(5)
 -- ============================================================
 
-INSERT INTO Favoritos (id_usuario, id_evento) VALUES
--- Jhonny: 2 historial (Tile, Karol) + 1 futuro (Hannah) ✓
-(1, 6),
+INSERT INTO favoritos (id_usuario, id_evento) VALUES
+-- Johnny: 2 historial (Tile, Karol) + 1 futuro (Hannah) 
 (1, 1),
 (1, 4),
--- Delio: 2 historial (Prision, Final) + 1 futuro (Salmon) ✓
-(2, 7),
+(1, 6),
+
+-- Delio: 2 historial (Prision, Final) + 1 futuro (Salmon) 
 (2, 2),
 (2, 3),
--- Mario: 2 historial (Karol, Tile) + 1 futuro (Cleopatra) ✓
-(3, 4),
+(2, 7),
+
+-- Mario: 2 historial (Tile, Karol) + 1 futuro (Cleopatra) 
 (3, 1),
+(3, 4),
 (3, 5);
 
 -- ============================================================

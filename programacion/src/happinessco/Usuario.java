@@ -103,44 +103,13 @@ public class Usuario {
 	
 	@Override
 	/**
-	 * Imprime datos del usuario
+	 * Imprime los datos del usuario
 	 * 
 	 * @return Formato de impresión para los datos del usuario
 	 */
 	public String toString() {
-		return String.format("Usuario ---> nombre=%s\n\t\t\temail=%s\n\t\t\tpassword=%s\n", nombre, email, password);
+		return String.format("Usuario ---> nombre=%s\n\t\t\temail=%s\n\t\t\tpassword=%s\n", 
+				nombre, email, password);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

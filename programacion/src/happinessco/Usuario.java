@@ -27,7 +27,6 @@ public class Usuario {
 	 * @param email  Email único asociado al usuario
 	 * @param password Contraseña insertada por el usuario
 	 * 
-	 * 
 	 */
 	
 	public Usuario(String nombre, String email, String password) {

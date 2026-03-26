@@ -14,32 +14,6 @@ $RECYCLE.BIN/
 .AppleDouble
 .LSOverride
 
-# ------- Java / IDE -------
-# Archivos compilados
-*.class
-*.jar
-*.war
-
-# IntelliJ IDEA
-.idea/
-*.iml
-*.iws
-out/
-
-# Eclipse
-.classpath
-.project
-.settings/
-bin/
-
-# NetBeans
-nbproject/
-build/
-dist/
-
-# VS Code
-.vscode/
-
 # ------- Base de datos -------
 # Archivos locales de MySQL Workbench
 *.mwb.bak

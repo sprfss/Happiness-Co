@@ -193,7 +193,7 @@ INSERT INTO favoritos (id_usuario, id_evento) VALUES
 CREATE VIEW galerias_anteriores_fecha_actual AS
     SELECT galerias.*
     FROM galerias, eventos
-    WHERE (eventos.fecha) < "2026-02-28" and (galerias.id_evento = eventos.id_evento);
+    WHERE (eventos.fecha) < '2026-02-28' and (galerias.id_evento = eventos.id_evento);
 
 -- Visualizamos la vista
 SELECT * FROM galerias_anteriores_fecha_actual;
@@ -223,7 +223,7 @@ SELECT * FROM vista_imagenes_galeria_prision;
 CREATE VIEW vista_favoritos_usuario2_futuros AS
     SELECT eventos.*
     FROM eventos, favoritos
-    WHERE (favoritos.id_usuario = 2) and (eventos.fecha > "2026-02-28") and (eventos.id_evento = favoritos.id_evento);
+    WHERE (favoritos.id_usuario = 2) and (eventos.fecha > '2026-02-28') and (eventos.id_evento = favoritos.id_evento);
     
 -- Visualizamos la vista
 SELECT * FROM vista_favoritos_usuario2_futuros;

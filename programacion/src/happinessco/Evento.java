@@ -3,7 +3,7 @@ package happinessco;
 import java.util.ArrayList;
 
 /**
- * Esta clase gestiona el registro de eventos
+ * Esta clase gestiona el registro de eventos culturales
  * 
  * <p> Registra identificador, fecha, título, ubicación, descripción y la galería asociada al evento <p>
  * 
@@ -13,17 +13,17 @@ public class Evento {
 
 	// ============= ATRIBUTOS =============
 	
-		/** Identificador del evento */
+		/** Identificador del evento. */
 		private int id;
-		/** Fecha del evento */
+		/** Fecha del evento. */
 		private String fecha;
-		/** Titulo del evento */
+		/** Titulo del evento. */
 		private String titulo;
-		/** Ubicación del evento */
+		/** Ubicación del evento. */
 		private String ubicacion;
-		/** Descripción del evento */
+		/** Descripción del evento. */
 		private String descripcion;
-		/** Galería del evento, referenciando la clase Galeria a la que realmente pertenece la galeria */
+		/** Galería del evento, referenciando la clase Galeria a la que realmente pertenece la galería. */
 		private ArrayList<Galeria> galerias;
 		
 

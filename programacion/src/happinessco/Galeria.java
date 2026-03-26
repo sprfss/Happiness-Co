@@ -102,9 +102,9 @@ public class Galeria {
 		
 		@Override
 		/**
-		 * Imprime los datos del usuario
+		 * Imprime los datos de las galerías
 		 * 
-		 * @return Formato de impresión para los datos del usuario
+		 * @return Formato de impresión para los datos de la galería
 		 */
 		public String toString() {
 			return String.format("Galería ---> id=%d\n\t\t\ttitulo=%s\n\t\t\tid evento=%d\n", 

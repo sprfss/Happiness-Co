@@ -121,20 +121,58 @@ public class Main {
 		}
 		return user;
 	}
+	
 	/**
 	 * Añade usuarios a la colección usuarios
 	 * 
+	 * @param teclado objeto para coger datos del usuario
 	 */
 	public static void aniadirUsuario(Scanner teclado) {
+		String[] datos=datosUsuario(teclado);
+		// Añado usuario
+		if (usuarios.containsKey(datos[1])){
+			System.out.println("El usuario ya existe");
+		}else {
+			creacionObjeto(datos);
+		}
+	}
+
+	/**
+	 * Solicita los datos del usuario
+	 * 
+	 * <p> 
+	 * @param teclado
+	 * 
+	 */
+	private static String [] datosUsuario(Scanner teclado) {
+		// Declaro datos
 		String nombre, email, password;
+		// Solicito datos
 		System.out.println("Introduce el nombre del usuario: ");
 		nombre=teclado.nextLine();
 		System.out.println("Introduce email del usuario: ");
 		email=teclado.nextLine();
 		System.out.println("Introduce la contraseña del usuario: ");
 		password=teclado.nextLine();
+		// Creo el array de datos 
+		return new String[] {nombre, email, password};
 	}
 	
+	/**
+	 * Creación de un objeto usuario 
+	 * 
+	 * <p> Crea el objeto asociado al usuario, dentro de la colección usuarios
+	 * e imprime que el usuario se ha creado correctamente <p>
+	 * 
+	 * <p> Los carga en la colección a través de las posiciones de esos datos en el array
+	 * que recibe con la información <p>
+	 * 
+	 * @param datos  recibe los datos almacenados en un array
+	 */
+	public static void creacionObjeto(String [] datos) {
+		usuarios.put(datos[1], new Usuario(datos[0], datos[1], datos[2]));
+		System.out.println("Usuario creado correctamente");
+	}
 	
 	
 

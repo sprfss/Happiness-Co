@@ -58,6 +58,7 @@ public class BaseDeDatos {
 	 * Solicita los datos necesarios para crear un usuario
 	 *
 	 * @param teclado objeto para recoger datos del usuario
+	 * 
 	 * @return array con [nombre, email, password]
 	 */
 	private static String[] datosUsuario(Scanner teclado) {
@@ -109,7 +110,9 @@ public class BaseDeDatos {
 	
 	/**
 	 * Solicita el identificador del objeto Usuario creado
+	 * 
 	 * @param teclado objeto para recoger el identificador del usuario
+	 * 
 	 * @return correo identificador del usuario
 	 */
 	private static String identificadorUsuario(Scanner teclado) {

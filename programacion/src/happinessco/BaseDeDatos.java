@@ -44,18 +44,20 @@ public class BaseDeDatos {
 	 * @param teclado objeto para coger datos del usuario
 	 */
 	public static void aniadirUsuario(Scanner teclado) {
-		String[] datos = datosUsuario(teclado);
-		if (usuarios.containsKey(datos[1])) {
-			System.out.println("El usuario ya existe");
+		// Cargamos los datos en un array que se llama igual que la función
+		String[] datosUsuario = datosUsuario(teclado);
+		// Creamos la sentencia condicional 
+		if (usuarios.containsKey(datosUsuario[1])) {
+			System.out.println("El usuario ya existe.");
 		} else {
-			creacionObjetoUsuario(datos);
+			creacionObjetoUsuario(datosUsuario);
 		}
 	}
 
 	/**
 	 * Solicita los datos necesarios para crear un usuario
 	 *
-	 * @param teclado objeto para coger datos del usuario
+	 * @param teclado objeto para recoger datos del usuario
 	 * @return array con [nombre, email, password]
 	 */
 	private static String[] datosUsuario(Scanner teclado) {
@@ -66,6 +68,7 @@ public class BaseDeDatos {
 		email = teclado.nextLine();
 		System.out.println("Introduce la contraseña del usuario: ");
 		password = teclado.nextLine();
+		// Devolvemos los datos a un nuevo array
 		return new String[]{nombre, email, password};
 	}
 
@@ -76,12 +79,84 @@ public class BaseDeDatos {
 	*
 	* @param datos array con [nombre, email, password]
 	*/
-	private static void creacionObjetoUsuario(String[] datos) {
-		usuarios.put(datos[1], new Usuario(datos[0], datos[1], datos[2]));
-		System.out.println("Usuario creado correctamente");
+	private static void creacionObjetoUsuario(String[] datosUsuario) {
+		// Creamos el objeto dentro de la colección usuarios e introducimos sus datos a través de las posiciones que ocupan en el array pasado por parámetro
+		usuarios.put(datosUsuario[1], new Usuario(datosUsuario[0], datosUsuario[1], datosUsuario[2]));
+		System.out.println("Usuario creado correctamente.");
 	}
 	
 
+	// ============= OPCIÓN 2 — ELIMINAR USUARIO =============
+	
+	/**
+	 * Elimina un usuario de la colección usuarios
+	 * 
+	 * <p> Solicita el email del usuario a eliminar y lo borra si existe <p>
+	 * 
+	 * @param teclado objeto para recoger datos del usuario
+	 */
+	public static void eliminarUsuario(Scanner teclado) {
+		// Cargamos el identificador correo
+		String correoUsuario=identificadorUsuario(teclado);
+		// Creamos la sentencia condicional
+		if (usuarios.containsKey(correoUsuario)) {
+			eliminacionObjetoUsuario(correoUsuario);
+		}else {
+			System.out.println("El usuario no existe.");
+		}
+		
+	}
+	
+	/**
+	 * Solicita el identificador del objeto Usuario creado
+	 * @param teclado objeto para recoger el identificador del usuario
+	 * @return correo identificador del usuario
+	 */
+	private static String identificadorUsuario(Scanner teclado) {
+		// Solicitamos identificador y lo guardamos en una variable
+		// Este método podría ser prescindible, pero así seguimos la misma estructura que para aniadirUsuario
+		String correo;
+		System.out.println("Introduce el correo del usuario que desea eliminar: ");
+		return correo=teclado.nextLine();
+	}
+	
+	/**
+	 * Elimina el objeto usuario de la colección usuarios
+	 * 
+	 * @param correoUsuario identicador usuario
+	 */
+	private static void eliminacionObjetoUsuario(String correoUsuario) {
+		// Eliminamos usuario de la colección a través del identifcador
+		usuarios.remove(correoUsuario);
+		System.out.println("Usuario eliminado correctamente.");
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

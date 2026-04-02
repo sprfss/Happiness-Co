@@ -30,7 +30,7 @@ import java.util.HashMap;
 /**
  * Clase principal
  * 
- * <p> Contiene el método main  <p>
+ * <p> Contiene el método main, que solicita datos al usuario <p>
  */
 public class Main {
 	

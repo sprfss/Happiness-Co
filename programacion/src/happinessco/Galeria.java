@@ -8,7 +8,7 @@ package happinessco;
  */
 public class Galeria {
 	
-	// ============= ATRIBUTOS =============
+	    // ============= ATRIBUTOS =============
 	
 		/** Identificador de la galería. */
 		private int id;

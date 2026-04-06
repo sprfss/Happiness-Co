@@ -320,9 +320,66 @@ public class BaseDeDatos {
 	
 	// ============= OPCIÓN 6 — ELIMINAR GALERÍA =============
 	
+	public static void eliminarGaleria(Scanner teclado) {
+		// Muestro el listado de los eventos
+		mostrarEventos();
+	    // Cargamos el identificador del evento
+		int identificadorEventoGaleria = identificadorEliminarEventoGaleria(teclado);
+		// Comprobamos que el evento existe
+		if (eventos.containsKey(identificadorEventoGaleria)) {
+			// Mostramos el listado de galerías del evento
+			mostrarGalerias(identificadorEventoGaleria);
+			// Cargamos el identificador de la galería
+			int idGaleria = identificadorGaleria(teclado);
+			// Eliminamos la galería
+			eliminacionObjetoGaleria(identificadorEventoGaleria, idGaleria);
+		}else {
+			System.out.println("El evento no existe.");
+		}
+	}
 	
+	public static int identificadorEliminarEventoGaleria(Scanner teclado) {
+		// Limpio buffer
+		teclado.nextLine();
+		System.out.println("Introduce el identificador del evento al que le deseas eliminar una galería: ");
+		return teclado.nextInt();
+	}
 	
+	/**
+	 * Muestra por pantalla el listado de galerías de un evento concreto
+	 *
+	 * @param idEvento identificador del evento
+	 */
+	private static void mostrarGalerias(int identificadorEventoGaleria) {
+		System.out.println("----------- LISTADO DE GALERÍAS -----------");
+		// Recorro la colección de galerías del evento para mostrar todas las registradas
+		for (Galeria galeria : eventos.get(identificadorEventoGaleria).getGalerias()) {
+			System.out.println(String.format(
+				"ID: %d | Título: %s",
+				galeria.getId(),
+				galeria.getTitulo()
+			));
+		}
+	}
 	
+	/**
+	 * Solicita el id de la galería que se desea eliminar
+	 *
+	 * @param teclado objeto para coger datos del usuario
+	 * @return idGaleria identificador de la galería
+	 */
+	private static int identificadorGaleria(Scanner teclado) {
+		// Limpio el buffer
+		teclado.nextLine();
+		System.out.println("Introduce el identificador de la galería que desea eliminar: ");
+		return teclado.nextInt();
+	}
+
+	
+	private static void eliminacionObjetoGaleria(int identificadorEventoGaleria, int idGaleria) {
+		// Eliminamos la galería asociada al evento a través de su identificador
+
+	}
 	
 	
 	

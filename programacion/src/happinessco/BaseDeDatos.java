@@ -44,7 +44,7 @@ public class BaseDeDatos {
 	 * @param teclado objeto para coger datos del usuario
 	 */
 	public static void aniadirUsuario(Scanner teclado) {
-		// Cargamos los datos en un array que se llama igual que la función
+		// Cargamos los datos en un array que se llama igual que el método
 		String[] datosUsuario = datosUsuario(teclado);
 		// Creamos la sentencia condicional 
 		if (usuarios.containsKey(datosUsuario[1])) {
@@ -134,14 +134,82 @@ public class BaseDeDatos {
 		System.out.println("Usuario eliminado correctamente.");
 	}
 	
+	// ============= OPCIÓN 3 — AÑADIR EVENTO =============
 	
+	/**
+	 * Añade un evento a la colección eventos
+	 * 
+	 * <p> Solicita los datos al usuario, genera el id automáticamente
+	 * e inicializa la colección de galerías vacía <p>
+	 * 
+	 * @param teclado objeto para coger datos del usuario
+	 */
+	public static void aniadirEvento(Scanner teclado) {
+		// Cargamos los datos en un array que se llama igual que el método
+		String datosEvento[] = datosEvento(teclado);
+		// Llamamos a crear objeto evento
+		creacionObjetoEvento(datosEvento);
+	}
 	
+	/**
+	 * Solicita los datos necesarios para crear un evento
+	 * 
+	 * @param teclado objeto para coger datos del usuario
+	 * @return array con [fehca, titulo, ubicacion, descripcion]
+	 */
+	private static String [] datosEvento(Scanner teclado) {
+		String fecha, titulo, ubicacion, descripcion;
+		System.out.println("Introduce la fecha del evento (dd-mm-yyyy): ");
+		fecha = teclado.nextLine();
+		System.out.println("Introduce el título del evento: ");
+		titulo = teclado.nextLine();
+		System.out.println("Introduce la ubicación del evento: ");
+		ubicacion = teclado.nextLine();
+		System.out.println("Introduce la descripción del evento: ");
+		descripcion = teclado.nextLine();
+		return new String[] {fecha, titulo, ubicacion, descripcion};
+	}
 	
+	/**
+	 * Crea el objeto Evento y lo añade a la colección
+	 * 
+	 * <p> El id se genera automáticamente con el contador
+	 * y la colección de galerías se inicializa vacía <p>
+	 * 
+	 * @param datosEvento array con [fecha, titulo, ubicacion, descripcion]
+	 */
+	private static void creacionObjetoEvento(String [] datosEvento) {
+		// El contador representa al id de la clase Evento
+		// Creamos el objeto dentro de la colección eventos e introducimos sus datos a través de las posiciones que ocupan en el array pasado por parámetro
+		eventos.put(contadorEventos, new Evento(contadorEventos, datosEvento[0], datosEvento[1], datosEvento[2], datosEvento[3]));
+		contadorEventos++;
+		System.out.println("Evento creado correctamente.");
+	}
 	
+	// ============= OPCIÓN 4 — ELIMINAR EVENTO =============
 	
+	public static void eliminarEvento() {
+		// Cargamos el id del evento a eliminar
+		
+		// Creamos la setencia condicional
+		
+		// Eliminamos evento de la colección eventos
+	}
 	
+	private static int identificadorEventos(Scanner teclado) {
+		// Para recorrere colecciones usamos el bucle for-each
+		do {
+			System.out.println("---------------------");
+			System.out.println("Listado de eventos: ");
+			System.out.println(eventos);
+			
+		}while 
+		
+	}
 	
-	
+	private static void eliminarObjetoEvento(int idEvento) {
+		
+	}
 	
 	
 	

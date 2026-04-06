@@ -30,6 +30,7 @@ public class BaseDeDatos {
 	/** Contador autogenerado para los ids de galerías */
 	private static int contadorGalerias = 0;
 	
+	// ============= OPCIONES DEL MENÚ ===================== //
 	
 	// ============= OPCIÓN 1 — AÑADIR USUARIO =============
 
@@ -98,32 +99,15 @@ public class BaseDeDatos {
 	 */
 	public static void eliminarUsuario(Scanner teclado) {
 		// Cargamos el identificador correo
-		String correoUsuario=identificadorUsuario(teclado);
+		String correoUsuario=identificadorTexto(teclado, "Introduce el correo del usuario que desea eliminar: ");
 		// Creamos la sentencia condicional
 		if (usuarios.containsKey(correoUsuario)) {
 			eliminacionObjetoUsuario(correoUsuario);
 		}else {
 			System.out.println("El usuario no existe.");
 		}
-		
 	}
-	
-	/**
-	 * Solicita el identificador del objeto Usuario creado
-	 * 
-	 * @param teclado objeto para recoger el identificador del usuario
-	 * 
-	 * @return correo identificador del usuario
-	 */
-	private static String identificadorUsuario(Scanner teclado) {
-		// Limpio el buffer
-		teclado.nextLine();
-		// Solicitamos identificador y lo guardamos en una variable
-		// Este método podría ser prescindible, pero así seguimos la misma estructura que para aniadirUsuario
-		System.out.println("Introduce el correo del usuario que desea eliminar: ");
-		return teclado.nextLine();
-	}
-	
+
 	/**
 	 * Elimina el objeto usuario de la colección usuarios
 	 * 
@@ -190,6 +174,7 @@ public class BaseDeDatos {
 	}
 	
 	// ============= OPCIÓN 4 — ELIMINAR EVENTO =============
+	
 	/**
 	 * Elimina un evento de la colección eventos
 	 * 
@@ -201,7 +186,7 @@ public class BaseDeDatos {
 		// LLamamos a mostrar evento
 		mostrarEventos();
 		// Cargamos el identificador a eliminar
-		int idEvento= identificadorEvento(teclado);
+		int idEvento= identificadorNumerico(teclado, "Introduce el id del evento que desea eliminar: ");
 		// Creamos la setencia condicional
 		if (eventos.containsKey(idEvento)) {
 			eliminarObjetoEvento(idEvento);
@@ -210,39 +195,7 @@ public class BaseDeDatos {
 		}
 		
 	}
-	/**
-	 * Muestra por pantalla el contenido de la colección eventos
-	 * 
-	 */
-	private static void mostrarEventos() {
-		// Para recorrer colecciones usamos el bucle for-each
-		System.out.println("----------- LISTADO DE EVENTOS -----------");
-		// Recorro la colección de eventos para mostrar todos los registrados
-		for (Evento evento : eventos.values()) {
-		    // Muestro todos los atributos del evento en cada iteración
-		    System.out.println(String.format(
-		        "ID: %d | Fecha: %s | Título: %s | Ubicación: %s | Descripción: %s",
-		        evento.getId(),
-		        evento.getFecha(),
-		        evento.getTitulo(),
-		        evento.getUbicacion(),
-		        evento.getDescripcion()
-		    ));
-		}
-		
-	}
-	/**
-	 * Solicita el id del evento que se desea eliminar
-	 * 
-	 * @param teclado objeto para coger datos del usuario
-	 * @return idEvento identificador del evento
-	 */
-	private static int identificadorEvento(Scanner teclado) {
-		// Limpio buffer
-		teclado.nextLine();
-		System.out.println("Introduce el id del evento que desea eliminar: ");
-		return teclado.nextInt();
-	}
+	
 	/**
 	 * Elimina el objeto evento de la colección eventos
 	 * 
@@ -268,7 +221,7 @@ public class BaseDeDatos {
 		// Mostramos el listado de eventos
 		mostrarEventos();
 		// Cargamos el identificador del evento
-		int idEventoGaleria = identificadorEventoGaleria(teclado);
+		int idEventoGaleria = identificadorNumerico(teclado, "¿De qué evento deseas crear una galería? Introduce su identifcador: ");
 		// Comprobamos que el evento existe
 		if (eventos.containsKey(idEventoGaleria)) {
 			// Cargamos los datos de la galería
@@ -278,19 +231,6 @@ public class BaseDeDatos {
 		} else {
 			System.out.println("El evento no existe.");
 		}	
-	}
-	
-	/**
-	 * Solicita el id del evento al que se quiere añadir una galería
-	 * 
-	 * @param teclado objeto para coger datos del usuario
-	 * @return idEventoGaleria identificador del evento del que se quiere crear una galería
-	 */
-	private static int identificadorEventoGaleria(Scanner teclado) {
-		// Limpio buffer
-		teclado.nextLine();
-		System.out.println("¿De qué evento deseas crear una galería? Introduce su identifcador: ");
-		return teclado.nextInt();
 	}
 	
 	/**
@@ -320,46 +260,41 @@ public class BaseDeDatos {
 	
 	// ============= OPCIÓN 6 — ELIMINAR GALERÍA =============
 	
+	/**
+	 * Elimina la galería de una evento
+	 * 
+	 * <p> Muestra los eventos, escoge uno, muestra las galerías del evento escogido
+	 * escoge una y la elimina <p>
+	 * 
+	 * @param teclado objeto para coger datos del usuario
+	 */
 	public static void eliminarGaleria(Scanner teclado) {
-		// Muestro el listado de los eventos
+		// Muestro el listado de los eventos (Reciclo método)
 		mostrarEventos();
 	    // Cargamos el identificador del evento
-		int identificadorEventoGaleria = identificadorEliminarEventoGaleria(teclado);
+		int idEventoGaleria = identificadorNumerico(teclado, "Introduce el identificador del evento al que le deseas eliminar una galería: ");
 		// Comprobamos que el evento existe
-		if (eventos.containsKey(identificadorEventoGaleria)) {
+		if (eventos.containsKey(idEventoGaleria)) {
 			// Mostramos el listado de galerías del evento
-			mostrarGalerias(identificadorEventoGaleria);
+			mostrarGalerias(idEventoGaleria);
 			// Cargamos el identificador de la galería
-			int idGaleria = identificadorGaleria(teclado);
+			int idGaleria = identificadorNumerico(teclado, "Introduce el identificador de la galería que desea eliminar: ");
 			// Eliminamos la galería
-			eliminacionObjetoGaleria(identificadorEventoGaleria, idGaleria);
+			eliminacionObjetoGaleria(idEventoGaleria, idGaleria);
 		}else {
 			System.out.println("El evento no existe.");
 		}
 	}
 	
 	/**
-	 * Solicita el identificador del evento al que se le desea eliminar la galería
-	 * 
-	 * @param teclado objeto para coger datos del usuario
-	 * @return identificadorEventoGaleria
-	 */
-	private static int identificadorEliminarEventoGaleria(Scanner teclado) {
-		// Limpio buffer
-		teclado.nextLine();
-		System.out.println("Introduce el identificador del evento al que le deseas eliminar una galería: ");
-		return teclado.nextInt();
-	}
-	
-	/**
 	 * Muestra por pantalla el listado de galerías de un evento concreto
 	 *
-	 * @param idEvento identificador del evento
+	 * @param idEventoGaleria identificador del evento
 	 */
-	private static void mostrarGalerias(int identificadorEventoGaleria) {
+	private static void mostrarGalerias(int idEventoGaleria) {
 		System.out.println("----------- LISTADO DE GALERÍAS -----------");
 		// Recorro la colección de galerías del evento para mostrar todas las registradas
-		for (Galeria galeria : eventos.get(identificadorEventoGaleria).getGalerias()) {
+		for (Galeria galeria : eventos.get(idEventoGaleria).getGalerias()) {
 			System.out.println(String.format(
 				"ID: %d | Título: %s",
 				galeria.getId(),
@@ -369,28 +304,15 @@ public class BaseDeDatos {
 	}
 	
 	/**
-	 * Solicita el id de la galería que se desea eliminar
-	 *
-	 * @param teclado objeto para coger datos del usuario
-	 * @return idGaleria identificador de la galería
-	 */
-	private static int identificadorGaleria(Scanner teclado) {
-		// Limpio el buffer
-		teclado.nextLine();
-		System.out.println("Introduce el identificador de la galería que desea eliminar: ");
-		return teclado.nextInt();
-	}
-
-	/**
 	 * Elimina el objeto galería de la colección de galerías del evento
 	 * 
-	 * @param identificadorEventoGaleria identificador del evento
+	 * @param idEventoGaleria identificador del evento
 	 * @param idGaleria identificador de la galería
 	 */
-	private static void eliminacionObjetoGaleria(int identificadorEventoGaleria, int idGaleria) {
+	private static void eliminacionObjetoGaleria(int idEventoGaleria, int idGaleria) {
 		// Guardo la referencia a la colección de galerías del evento
-	    ArrayList<Galeria> galerias = eventos.get(identificadorEventoGaleria).getGalerias();
-	    // Recorro la colección para encontrar la galería que coincide con el id de galería
+	    ArrayList<Galeria> galerias = eventos.get(idEventoGaleria).getGalerias();
+	    // Recorro la colección para encontrar la galería que coincide con el idGaleria
 	    for (Galeria galeria : galerias) {
 	        if (galeria.getId() == idGaleria) {
 	            galerias.remove(galeria);
@@ -405,12 +327,61 @@ public class BaseDeDatos {
 	// ============= OPCIÓN 7 — AÑADIR FAVORITO =============
 	
 	
+	// ============ MÉTODOS RECICLADOS ===============
 	
+	/**
+	 * Solicita un identificador numérico
+	 *
+	 * <p> Método reutilizable para todas las opciones que requieren
+	 * identificar un objeto por su id numérico <p>
+	 *
+	 * @param teclado objeto para coger datos del usuario
+	 * @param mensaje mensaje a mostrar al usuario
+	 * @return identificador numérico introducido
+	 */
+	private static int identificadorNumerico(Scanner teclado, String mensaje) {
+	    // Limpio buffer
+	    teclado.nextLine();
+	    System.out.println(mensaje);
+	    return teclado.nextInt();
+	}
+
+	/**
+	 * Solicita un identificador de texto
+	 *
+	 * <p> Método reutilizable para todas las opciones que requieren
+	 * identificar un objeto por un texto como el correo <p>
+	 *
+	 * @param teclado objeto para coger datos del usuario
+	 * @param mensaje mensaje a mostrar al usuario
+	 * @return identificador de texto introducido
+	 */
+	private static String identificadorTexto(Scanner teclado, String mensaje) {
+	    // Limpio buffer
+	    teclado.nextLine();
+	    System.out.println(mensaje);
+	    return teclado.nextLine();
+	}
 	
-	
-	
-	
-	
-	
+	/**
+	 * Muestra por pantalla el contenido de la colección eventos
+	 * 
+	 */
+	private static void mostrarEventos() {
+		// Para recorrer colecciones usamos el bucle for-each
+		System.out.println("----------- LISTADO DE EVENTOS -----------");
+		// Recorro la colección de eventos para mostrar todos los registrados
+		for (Evento evento : eventos.values()) {
+		    // Muestro todos los atributos del evento en cada iteración
+		    System.out.println(String.format(
+		        "ID: %d | Fecha: %s | Título: %s | Ubicación: %s | Descripción: %s",
+		        evento.getId(),
+		        evento.getFecha(),
+		        evento.getTitulo(),
+		        evento.getUbicacion(),
+		        evento.getDescripcion()
+		    ));
+		}
+	}
 	
 }

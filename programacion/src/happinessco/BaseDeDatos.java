@@ -60,6 +60,8 @@ public class BaseDeDatos {
 	 * @return array con [nombre, email, password]
 	 */
 	private static String[] datosUsuario(Scanner teclado) {
+		// Limpio el buffer
+		teclado.nextLine();
 		String nombre, email, password;
 		System.out.println("Introduce el nombre del usuario: ");
 		nombre = teclado.nextLine();
@@ -114,6 +116,8 @@ public class BaseDeDatos {
 	 * @return correo identificador del usuario
 	 */
 	private static String identificadorUsuario(Scanner teclado) {
+		// Limpio el buffer
+		teclado.nextLine();
 		// Solicitamos identificador y lo guardamos en una variable
 		// Este método podría ser prescindible, pero así seguimos la misma estructura que para aniadirUsuario
 		System.out.println("Introduce el correo del usuario que desea eliminar: ");
@@ -155,6 +159,8 @@ public class BaseDeDatos {
 	 * @return array con [fehca, titulo, ubicacion, descripcion]
 	 */
 	private static String [] datosEvento(Scanner teclado) {
+		// Limpio el buffer
+		teclado.nextLine();
 		String fecha, titulo, ubicacion, descripcion;
 		System.out.println("Introduce la fecha del evento (dd-mm-yyyy): ");
 		fecha = teclado.nextLine();
@@ -184,7 +190,13 @@ public class BaseDeDatos {
 	}
 	
 	// ============= OPCIÓN 4 — ELIMINAR EVENTO =============
-	
+	/**
+	 * Elimina un evento de la colección eventos
+	 * 
+	 * <p> Muestra el listado de eventos y elimina el seleccionado a través del id <p>
+	 * 
+	 * @param teclado objeto para coger datos del usuario
+	 */
 	public static void eliminarEvento(Scanner teclado) {
 		// LLamamos a mostrar evento
 		mostrarEventos();
@@ -226,8 +238,9 @@ public class BaseDeDatos {
 	 * @return idEvento identificador del evento
 	 */
 	private static int identificadorEvento(Scanner teclado) {
-		System.out.println("Introduce el id del evento que desea eliminar: ");
+		// Limpio buffer
 		teclado.nextLine();
+		System.out.println("Introduce el id del evento que desea eliminar: ");
 		return teclado.nextInt();
 	}
 	/**
@@ -236,7 +249,7 @@ public class BaseDeDatos {
 	 * @param idEvento identificador del evento
 	 */
 	private static void eliminarObjetoEvento(int idEvento) {
-		// Eliminamos usuario de la colección a través del identifcador
+		// Eliminamos evento de la colección a través del identifcador
 		eventos.remove(idEvento);
 		System.out.println("Evento eliminado correctamente.");
 	}

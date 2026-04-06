@@ -326,6 +326,35 @@ public class BaseDeDatos {
 	
 	// ============= OPCIÓN 7 — AÑADIR FAVORITO =============
 	
+	public static void aniadirFavorito(Scanner teclado) {
+		// Muestro eventos y usuarios
+		mostrarEventos();
+		mostrarUsuarios();
+	}
+	
+   private static void mostrarUsuarios() {
+	// Para recorrer colecciones usamos el bucle for-each
+	   System.out.println("-------------- LISTADO DE USUARIOS ----------");
+	// Recorro la colección de usuarios para mostrar todos los registrados
+	   for (Usuario usuario : usuarios.values()){
+		   // Muestro todos los atributos del usuario en cada iteración
+		   System.out.println(String.format(
+				   "Nombre: %s | Email: %s | Password: %s",
+				   usuario.getNombre(),
+				   usuario.getEmail(),
+				   usuario.getPassword()
+				   ));
+	   }
+   }
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	// ============ MÉTODOS RECICLADOS ===============
 	

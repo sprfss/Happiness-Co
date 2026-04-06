@@ -338,7 +338,13 @@ public class BaseDeDatos {
 		}
 	}
 	
-	public static int identificadorEliminarEventoGaleria(Scanner teclado) {
+	/**
+	 * Solicita el identificador del evento al que se le desea eliminar la galería
+	 * 
+	 * @param teclado objeto para coger datos del usuario
+	 * @return identificadorEventoGaleria
+	 */
+	private static int identificadorEliminarEventoGaleria(Scanner teclado) {
 		// Limpio buffer
 		teclado.nextLine();
 		System.out.println("Introduce el identificador del evento al que le deseas eliminar una galería: ");
@@ -375,12 +381,28 @@ public class BaseDeDatos {
 		return teclado.nextInt();
 	}
 
-	
+	/**
+	 * Elimina el objeto galería de la colección de galerías del evento
+	 * 
+	 * @param identificadorEventoGaleria identificador del evento
+	 * @param idGaleria identificador de la galería
+	 */
 	private static void eliminacionObjetoGaleria(int identificadorEventoGaleria, int idGaleria) {
-		// Eliminamos la galería asociada al evento a través de su identificador
+		// Guardo la referencia a la colección de galerías del evento
+	    ArrayList<Galeria> galerias = eventos.get(identificadorEventoGaleria).getGalerias();
+	    // Recorro la colección para encontrar la galería que coincide con el id de galería
+	    for (Galeria galeria : galerias) {
+	        if (galeria.getId() == idGaleria) {
+	            galerias.remove(galeria);
+	            System.out.println("Galería eliminada correctamente.");
+	            return;
+	        }
+	    }
+	    System.out.println("La galería no existe.");
 
 	}
 	
+	// ============= OPCIÓN 7 — AÑADIR FAVORITO =============
 	
 	
 	

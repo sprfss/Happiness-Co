@@ -244,7 +244,7 @@ public class BaseDeDatos {
 		return teclado.nextInt();
 	}
 	/**
-	 * Elimina el obejto evento de la colección eventos
+	 * Elimina el objeto evento de la colección eventos
 	 * 
 	 * @param idEvento identificador del evento
 	 */
@@ -254,14 +254,71 @@ public class BaseDeDatos {
 		System.out.println("Evento eliminado correctamente.");
 	}
 	
+	// ============= OPCIÓN 5 — AÑADIR GALERÍA =============
 	
+	/**
+	 * Añade una galería al evento seleccionado
+	 * 
+	 * <p> Muestra el listado de eventos, solicita el id del evento y
+	 *  añade la galería a su colección interna <p>
+	 *  
+	 * @param teclado objeto para coger datos del usuario
+	 */
+	public static void aniadirGaleria(Scanner teclado) {
+		// Mostramos el listado de eventos
+		mostrarEventos();
+		// Cargamos el identificador del evento
+		int idEventoGaleria = identificadorEventoGaleria(teclado);
+		// Comprobamos que el evento existe
+		if (eventos.containsKey(idEventoGaleria)) {
+			// Cargamos los datos de la galería
+			String titulo = datosGaleria(teclado);
+			// Creamos el objeto galería
+			creacionObjetoGaleria(idEventoGaleria, titulo);
+		} else {
+			System.out.println("El evento no existe.");
+		}	
+	}
 	
+	/**
+	 * Solicita el id del evento al que se quiere añadir una galería
+	 * 
+	 * @param teclado objeto para coger datos del usuario
+	 * @return idEventoGaleria identificador del evento del que se quiere crear una galería
+	 */
+	private static int identificadorEventoGaleria(Scanner teclado) {
+		// Limpio buffer
+		teclado.nextLine();
+		System.out.println("¿De qué evento deseas crear una galería? Introduce su identifcador: ");
+		return teclado.nextInt();
+	}
 	
+	/**
+	 *  Solicita los datos necesarios para crear una galería
+	 *  
+	 * @param teclado objeto para coger datos del usuario
+	 * @return titulo  título de la galería
+	 */
+	private static String datosGaleria(Scanner teclado) {
+		// Limpio buffer
+		teclado.nextLine();
+		System.out.println("Introduce el título de la galería: ");
+		return teclado.nextLine();
+	}
 	
+	/**
+	 * Crea el objeto Galeria y lo añade a la colección de galerías del evento
+	 * 
+	 * @param idEventoGaleria identificador del evento
+	 * @param titulo título de la galería
+	 */
+	private static void creacionObjetoGaleria (int idEventoGaleria, String titulo) {
+		eventos.get(idEventoGaleria).getGalerias().add(new Galeria(contadorGalerias, titulo, idEventoGaleria));
+		contadorGalerias++;
+		System.out.println("Galería creada correctamente.");
+	}
 	
-	
-	
-	
+	// ============= OPCIÓN 6 — ELIMINAR GALERÍA =============
 	
 	
 	

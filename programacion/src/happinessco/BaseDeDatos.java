@@ -1,11 +1,9 @@
-
 package happinessco;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-/**
  /**
  * Clase intermediaria entre Main y las clases del modelo de datos
  *
@@ -118,9 +116,8 @@ public class BaseDeDatos {
 	private static String identificadorUsuario(Scanner teclado) {
 		// Solicitamos identificador y lo guardamos en una variable
 		// Este método podría ser prescindible, pero así seguimos la misma estructura que para aniadirUsuario
-		String correo;
 		System.out.println("Introduce el correo del usuario que desea eliminar: ");
-		return correo=teclado.nextLine();
+		return teclado.nextLine();
 	}
 	
 	/**
@@ -188,27 +185,60 @@ public class BaseDeDatos {
 	
 	// ============= OPCIÓN 4 — ELIMINAR EVENTO =============
 	
-	public static void eliminarEvento() {
-		// Cargamos el id del evento a eliminar
-		
+	public static void eliminarEvento(Scanner teclado) {
+		// LLamamos a mostrar evento
+		mostrarEventos();
+		// Cargamos el identificador a eliminar
+		int idEvento= identificadorEvento(teclado);
 		// Creamos la setencia condicional
-		
-		// Eliminamos evento de la colección eventos
-	}
-	
-	private static int identificadorEventos(Scanner teclado) {
-		// Para recorrere colecciones usamos el bucle for-each
-		do {
-			System.out.println("---------------------");
-			System.out.println("Listado de eventos: ");
-			System.out.println(eventos);
-			
-		}while 
+		if (eventos.containsKey(idEvento)) {
+			eliminarObjetoEvento(idEvento);
+		}else {
+			System.out.println("El evento no existe.");
+		}
 		
 	}
-	
+	/**
+	 * Muestra por pantalla el contenido de la colección eventos
+	 * 
+	 */
+	private static void mostrarEventos() {
+		// Para recorrer colecciones usamos el bucle for-each
+		System.out.println("----------- LISTADO DE EVENTOS -----------");
+		// Recorro la colección de eventos para mostrar todos los registrados
+		for (Evento evento : eventos.values()) {
+		    // Muestro todos los atributos del evento en cada iteración
+		    System.out.println(String.format(
+		        "ID: %d | Fecha: %s | Título: %s | Ubicación: %s | Descripción: %s",
+		        evento.getId(),
+		        evento.getFecha(),
+		        evento.getTitulo(),
+		        evento.getUbicacion(),
+		        evento.getDescripcion()
+		    ));
+		}
+		
+	}
+	/**
+	 * Solicita el id del evento que se desea eliminar
+	 * 
+	 * @param teclado objeto para coger datos del usuario
+	 * @return idEvento identificador del evento
+	 */
+	private static int identificadorEvento(Scanner teclado) {
+		System.out.println("Introduce el id del evento que desea eliminar: ");
+		teclado.nextLine();
+		return teclado.nextInt();
+	}
+	/**
+	 * Elimina el obejto evento de la colección eventos
+	 * 
+	 * @param idEvento identificador del evento
+	 */
 	private static void eliminarObjetoEvento(int idEvento) {
-		
+		// Eliminamos usuario de la colección a través del identifcador
+		eventos.remove(idEvento);
+		System.out.println("Evento eliminado correctamente.");
 	}
 	
 	

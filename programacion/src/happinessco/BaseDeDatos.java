@@ -339,22 +339,22 @@ public class BaseDeDatos {
 		mostrarEventos();
 		mostrarUsuarios();
 		// Cargamos el identificador del evento y el correo del usuario
-		int idEventoFavorito=identificadorNumerico(teclado, "Introduce el identificador de tu evento favorito: ");
-		String correoUsuario=identificadorTexto(teclado, "Introduce un correo de usuario para crear el evento favorito: ");
+		String correoUsuario=identificadorTexto(teclado, "Introduce el correo de usuario para crear asociado un evento favorito: ");
+		int idEventoFavorito=identificadorNumerico(teclado, "Introduce el identificador del evento favorito: ");
 		// Comprobamos que los datos existan
 		if (eventos.containsKey(idEventoFavorito) && usuarios.containsKey(correoUsuario)) {
 			// Creamos el objeto favorito
-			creacionObjetoFavorito(idEventoFavorito, correoUsuario);
+			creacionObjetoFavorito(correoUsuario, idEventoFavorito);
 		}else{
 			System.out.println("El evento o/y correo de usuario introducido no existe o existen");
 		}
 	}
 	
-   /**
+	/**
     * Muestra por pantalla el contenido de la colección usuarios
     * 
     */
-   private static void mostrarUsuarios() {
+	private static void mostrarUsuarios() {
 	// Para recorrer colecciones usamos el bucle for-each
 	   System.out.println("-------------- LISTADO DE USUARIOS ----------");
 	// Recorro la colección de usuarios para mostrar todos los registrados
@@ -375,21 +375,68 @@ public class BaseDeDatos {
     * @param idEventoFavorito identificador del evento
     * @param correoUsuario	  identificador del usuario
     */
-   private static void creacionObjetoFavorito(int idEventoFavorito, String correoUsuario){
+   private static void creacionObjetoFavorito(String correoUsuario, int idEventoFavorito){
 	   favoritos.add(new Favorito(correoUsuario, idEventoFavorito));
 	   System.out.println("Favorito creado correctamente.");
 	   
    }
+   
+   // ============= OPCIÓN 8 — ELIMINAR FAVORITO =============
+   
+   public static void eliminarFavorito(Scanner teclado) {
+	   // Muestro la colección de favoritos
+	   mostrarFavoritos();
+	   // Cargo identificadores evento y correo para seleccionar favorito
+	   String correoUsuario=identificadorTexto(teclado, "Introduce el correo del usuario asociado al evento favorito que desea eliminar: ");
+	   int idEventoFavorito=identificadorNumerico(teclado, "Introduce el identificador del evento favorito que desea eliminar: ");
+	   // Compruebo validez de datos introducidos
+	   if (existeFavorito(idEventoFavorito, correoUsuario)){
+		   eliminacionObjetoFavorito(correoUsuario, idEventoFavorito);
+	   }else {
+		   System.out.println("El favorito no existe.");
+	   }
+	   
+   }
+   
+	/**
+	 * Comprueba si existe un favorito con la combinación de idEvento y correoUsuario
+	 *
+	 * @param idEvento      identificador del evento
+	 * @param correoUsuario correo del usuario
+	 * @return true si existe, false si no
+	 */
+	private static boolean existeFavorito(int idEvento, String correoUsuario) {
+	    // Recorro la colección para encontrar la combinación
+	    for (Favorito favorito : favoritos) {
+	        if (favorito.getIdEvento() == idEvento && favorito.getCorreoUsuario().equals(correoUsuario)) {
+	            return true;
+	        }
+	    }
+	    return false;
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
+	/**
+	 * Elimina el objeto favorito de la colección de favoritos
+	 *
+	 * @param idEventoFavorito     identificador del evento
+	 * @param correoUsuario        correo del usuario
+	 */
+	private static void eliminacionObjetoFavorito(String correoUsuario, int idEventoFavorito) {
+	    // Guardo la referencia a la colección de favoritos
+	    for (Favorito favorito : favoritos) {
+	        // Compruebo la combinación de idEvento y correoUsuario
+	        if (favorito.getIdEvento() == idEventoFavorito && favorito.getCorreoUsuario().equals(correoUsuario)) {
+	            favoritos.remove(favorito);
+	            System.out.println("Favorito eliminado correctamente.");
+	            return;
+	        }
+	    }
+	}
+		
 	// ============ MÉTODOS RECICLADOS ===============
+	
+	/* mostrarGalerias() y mostrarUsuarios() se usan una única vez en la clase,
+	   por eso no están en esta sección, aunque podrían aparecer */
 	
 	/**
 	 * Solicita un identificador numérico
@@ -445,5 +492,22 @@ public class BaseDeDatos {
 		    ));
 		}
 	}
+	
+	/**
+     * Muestra por pantalla el contenido de la colección de favoritos
+     * 
+     */
+	private static void mostrarFavoritos() {
+	   // Para recorrer colecciones usamos el bucle for-each
+	   System.out.println("------------- LISTADO DE FAVORITOS ------------");
+	   // Recorro la colección de favoritos para mostrar todos los registrados
+	   for (Favorito favorito : favoritos) {
+		   System.out.println(String.format(
+				   "Correo Usuario: %s | Identificador del Evento: %d",
+				   favorito.getCorreoUsuario(),
+				   favorito.getIdEvento()
+				   ));
+	   }
+    }
 	
 }

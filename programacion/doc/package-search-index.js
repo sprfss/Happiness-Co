@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"happinessco"},{"l":"happinessco.controlador"},{"l":"happinessco.modelo"},{"l":"happinessco.vista"}];updateSearchResults();

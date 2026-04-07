@@ -10,7 +10,6 @@ import java.util.ArrayList;
  */
 public class Evento {
 	
-
 	// ============= ATRIBUTOS =============
 	
 		/** Identificador del evento. */
@@ -26,8 +25,6 @@ public class Evento {
 		/** Galería del evento, referenciando la clase Galeria a la que realmente pertenece la galería. */
 		private ArrayList<Galeria> galerias;
 		
-
-
 		// ============= CONSTRUCTOR =============
 		
 		/**
@@ -171,8 +168,6 @@ public class Evento {
 			this.galerias = galerias;
 		}
 
-
-		
 		// ============= TOSTRING =============
 		
 		@Override

@@ -140,7 +140,7 @@ public class BaseDeDatos {
 	 * Solicita los datos necesarios para crear un evento
 	 * 
 	 * @param teclado objeto para coger datos del usuario
-	 * @return array con [fehca, titulo, ubicacion, descripcion]
+	 * @return array con [fecha, titulo, ubicacion, descripcion]
 	 */
 	private static String [] datosEvento(Scanner teclado) {
 		// Limpio el buffer
@@ -221,7 +221,7 @@ public class BaseDeDatos {
 		// Mostramos el listado de eventos
 		mostrarEventos();
 		// Cargamos el identificador del evento
-		int idEventoGaleria = identificadorNumerico(teclado, "¿De qué evento deseas crear una galería? Introduce su identifcador: ");
+		int idEventoGaleria = identificadorNumerico(teclado, "¿De qué evento deseas crear una galería? Introduce su identificador: ");
 		// Comprobamos que el evento existe
 		if (eventos.containsKey(idEventoGaleria)) {
 			// Cargamos los datos de la galería
@@ -339,7 +339,7 @@ public class BaseDeDatos {
 		mostrarEventos();
 		mostrarUsuarios();
 		// Cargamos el identificador del evento y el correo del usuario
-		String correoUsuario=identificadorTexto(teclado, "Introduce el correo de usuario para crear asociado un evento favorito: ");
+		String correoUsuario=identificadorTexto(teclado, "Introduce el correo de usuario para crear un evento favorito asociado: ");
 		int idEventoFavorito=identificadorNumerico(teclado, "Introduce el identificador del evento favorito: ");
 		// Comprobamos que los datos existan
 		if (eventos.containsKey(idEventoFavorito) && usuarios.containsKey(correoUsuario)) {
@@ -372,8 +372,8 @@ public class BaseDeDatos {
    /**
     * Crea el objeto Favorito y lo añade a la colección favoritos
     * 
-    * @param idEventoFavorito identificador del evento
     * @param correoUsuario	  identificador del usuario
+    * @param idEventoFavorito identificador del evento
     */
    private static void creacionObjetoFavorito(String correoUsuario, int idEventoFavorito){
 	   favoritos.add(new Favorito(correoUsuario, idEventoFavorito));
@@ -383,6 +383,14 @@ public class BaseDeDatos {
    
    // ============= OPCIÓN 8 — ELIMINAR FAVORITO =============
    
+   /**
+    * Elimina un favorito de la colección de favoritos
+    * 
+    * <p> Muestra la colección favoritos, solicita los datos del favorito a eliminar
+    * chequea que los datos sean válidos y elimina el objeto de la colección <p>
+    * 
+    * @param teclado objeto para coger datos del usuario
+    */
    public static void eliminarFavorito(Scanner teclado) {
 	   // Muestro la colección de favoritos
 	   mostrarFavoritos();
@@ -422,7 +430,7 @@ public class BaseDeDatos {
 	 * @param correoUsuario        correo del usuario
 	 */
 	private static void eliminacionObjetoFavorito(String correoUsuario, int idEventoFavorito) {
-	    // Guardo la referencia a la colección de favoritos
+	    // Recorro la colección con un bucle for each
 	    for (Favorito favorito : favoritos) {
 	        // Compruebo la combinación de idEvento y correoUsuario
 	        if (favorito.getIdEvento() == idEventoFavorito && favorito.getCorreoUsuario().equals(correoUsuario)) {
@@ -503,7 +511,7 @@ public class BaseDeDatos {
 	   // Recorro la colección de favoritos para mostrar todos los registrados
 	   for (Favorito favorito : favoritos) {
 		   System.out.println(String.format(
-				   "Correo Usuario: %s | Identificador del Evento: %d",
+				   "Correo Usuario/Email: %s | ID Evento: %d",
 				   favorito.getCorreoUsuario(),
 				   favorito.getIdEvento()
 				   ));

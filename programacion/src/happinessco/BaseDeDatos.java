@@ -75,7 +75,7 @@ public class BaseDeDatos {
 	}
 
 	/**
-	* Crea el objeto Usuario y lo añade a la colección
+	* Crea el objeto Usuario y lo añade a la colección usuarios
 	*
 	* <p> Los datos se cargan a través de las posiciones del array recibido <p>
 	*
@@ -158,7 +158,7 @@ public class BaseDeDatos {
 	}
 	
 	/**
-	 * Crea el objeto Evento y lo añade a la colección
+	 * Crea el objeto Evento y lo añade a la colección eventos
 	 * 
 	 * <p> El id se genera automáticamente con el contador
 	 * y la colección de galerías se inicializa vacía <p>
@@ -326,12 +326,34 @@ public class BaseDeDatos {
 	
 	// ============= OPCIÓN 7 — AÑADIR FAVORITO =============
 	
+	/**
+	 * Crea un evento favorito asociado a un usuario
+	 * 
+	 * <p> Muestra los eventos y usuarios de las colecciones, solicita los identifcadores,
+	 * chequea la existencia de ambos y crea un objeto y lo añade a la colección de favoritos <p>
+	 * 
+	 * @param teclado objeto para coger datos del usuario
+	 */
 	public static void aniadirFavorito(Scanner teclado) {
 		// Muestro eventos y usuarios
 		mostrarEventos();
 		mostrarUsuarios();
+		// Cargamos el identificador del evento y el correo del usuario
+		int idEventoFavorito=identificadorNumerico(teclado, "Introduce el identificador de tu evento favorito: ");
+		String correoUsuario=identificadorTexto(teclado, "Introduce un correo de usuario para crear el evento favorito: ");
+		// Comprobamos que los datos existan
+		if (eventos.containsKey(idEventoFavorito) && usuarios.containsKey(correoUsuario)) {
+			// Creamos el objeto favorito
+			creacionObjetoFavorito(idEventoFavorito, correoUsuario);
+		}else{
+			System.out.println("El evento o/y correo de usuario introducido no existe o existen");
+		}
 	}
 	
+   /**
+    * Muestra por pantalla el contenido de la colección usuarios
+    * 
+    */
    private static void mostrarUsuarios() {
 	// Para recorrer colecciones usamos el bucle for-each
 	   System.out.println("-------------- LISTADO DE USUARIOS ----------");
@@ -339,14 +361,25 @@ public class BaseDeDatos {
 	   for (Usuario usuario : usuarios.values()){
 		   // Muestro todos los atributos del usuario en cada iteración
 		   System.out.println(String.format(
-				   "Nombre: %s | Email: %s | Password: %s",
+				   "Nombre: %s | Email: %s",
 				   usuario.getNombre(),
-				   usuario.getEmail(),
-				   usuario.getPassword()
+				   usuario.getEmail()
+				   // usuario.getPassword() No es buena práxis mostrar la contraseña de los usuarios
 				   ));
 	   }
    }
-	
+   
+   /**
+    * Crea el objeto Favorito y lo añade a la colección favoritos
+    * 
+    * @param idEventoFavorito identificador del evento
+    * @param correoUsuario	  identificador del usuario
+    */
+   private static void creacionObjetoFavorito(int idEventoFavorito, String correoUsuario){
+	   favoritos.add(new Favorito(correoUsuario, idEventoFavorito));
+	   System.out.println("Favorito creado correctamente.");
+	   
+   }
 	
 	
 	

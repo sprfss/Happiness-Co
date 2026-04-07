@@ -1,4 +1,4 @@
-package happinessco;
+package happinessco.modelo;
 
 import java.util.ArrayList;
 

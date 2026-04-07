@@ -1,4 +1,4 @@
-package happinessco;
+package happinessco.modelo;
 
 /**
  * Esta clase gestiona el registro de Usuarios

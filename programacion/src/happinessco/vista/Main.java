@@ -1,7 +1,9 @@
-package happinessco;
+package happinessco.vista;
 
 // Importo paquetes utilizados
 import java.util.Scanner;
+
+import happinessco.controlador.BaseDeDatos;
 
 /**
  * Clase principal
@@ -86,7 +88,6 @@ public class Main {
 		System.out.println("MENÚ DE ACCIONES\n 1. Añadir usuario\n 2. Eliminar usuario\n 3. Añadir evento\n 4. Eliminar evento\n 5. Añadir galería\n 6. Eliminar galería\n 7. Añadir favorito\n 8. Eliminar favorito\n 9. Salir");
 		System.out.println("-------------------------");
 	}
-	
 	
 	/**
 	 * Comprueba la existencia de la opción introducida por el usuario

@@ -1,8 +1,13 @@
-package happinessco;
+package happinessco.controlador;
 // Importo paquetes utilizados
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+
+import happinessco.modelo.Evento;
+import happinessco.modelo.Favorito;
+import happinessco.modelo.Galeria;
+import happinessco.modelo.Usuario;
 
  /**
  * Clase intermediaria entre Main y las clases del modelo de datos

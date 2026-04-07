@@ -1,4 +1,4 @@
-package happinessco;
+package happinessco.modelo;
 
 /**
  * Esta clase gestiona las galerías de los eventos

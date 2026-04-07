@@ -1,4 +1,4 @@
-package happinessco;
+package happinessco.modelo;
 
 /**
  * Esta clase gestiona los eventos favoritos de los usuarios

@@ -1,57 +1,231 @@
+/* ============================================================
+   HAPPINESS & CO — Hoja de estilos principal
+   Archivo: assets/css/styles.css
+   ============================================================ */
+
+
+/* ============================================================
+   1. TIPOGRAFÍA
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
 body {
   font-family: 'Montserrat', sans-serif;
 }
 
-/* Hero — círculos decorativos de fondo */
-.hero-bg {
-  background: #0c0c1d;
+
+/* ============================================================
+   2. COLORES CORPORATIVOS — Variables CSS reutilizables
+   Uso: var(--color-rosa), var(--color-azul), etc.
+   ============================================================ */
+
+:root {
+  --color-rosa:    #ba007c;
+  --color-azul:    #009bdb;
+  --color-naranja: #ff7b00;
+  --color-gris:    #555555;
+}
+
+
+/* ============================================================
+   3. NAVEGACIÓN
+   ============================================================ */
+
+/* Enlace activo del nav */
+.nav-link-activo {
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+
+/* ============================================================
+   4. HERO — Sección principal con imagen de fondo
+   ============================================================ */
+
+/* Contenedor principal del hero */
+.hero {
+  background-color: #0c0c1d;
   position: relative;
   overflow: hidden;
+  min-height: 380px;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
 }
 
-.hero-bg::before {
-  content: '';
+/* Imagen de fondo — cubre todo el contenedor */
+.hero-imagen {
   position: absolute;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  border: 70px solid rgba(186, 0, 124, 0.07);
-  top: -150px;
-  right: 80px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.45;
 }
 
-.hero-bg::after {
-  content: '';
+/* Degradado oscuro abajo para que el texto sea legible */
+.hero-overlay {
   position: absolute;
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  border: 40px solid rgba(0, 155, 219, 0.06);
-  top: -30px;
-  right: 200px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
 }
 
-/* Cards — animación hover */
-.card-hover {
+/* Contenido del hero — encima de la imagen */
+.hero-contenido {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+/* Badge de categoría (MÚSICA, EXPOSICIÓN...) */
+.hero-badge {
+  display: inline-block;
+  background-color: var(--color-rosa);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+/* Puntos indicadores del carrusel */
+.hero-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.4);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.hero-dot.activo {
+  background-color: white;
+}
+
+/* Botones anterior/siguiente */
+.hero-btn-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: rgba(255,255,255,0.2);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.hero-btn-nav:hover {
+  background-color: rgba(255,255,255,0.4);
+}
+
+
+/* ============================================================
+   5. CARDS DE EVENTOS
+   ============================================================ */
+
+/* Animación al pasar el ratón */
+.card-evento {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.card-hover:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+.card-evento:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
 
-/* Nav — línea activa bajo el ítem seleccionado */
-.nav-link {
-  position: relative;
+/* Imagen dentro de la card */
+.card-imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
-.nav-link.active::after {
-  content: '';
+/* Barras de color inferior según categoría */
+.barra-rosa    { background-color: var(--color-rosa); }
+.barra-azul    { background-color: var(--color-azul); }
+.barra-naranja { background-color: var(--color-naranja); }
+.barra-gris    { background-color: var(--color-gris); }
+
+/* Badges de categoría en las cards */
+.card-badge {
   position: absolute;
-  bottom: -2px;
-  left: 0;
-  right: 0;
-  height: 1.5px;
-  background: #ba007c;
+  top: 10px;
+  left: 10px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.badge-rosa    { background-color: #fce4f4; color: var(--color-rosa); }
+.badge-azul    { background-color: #e3f2fd; color: #0077b3; }
+.badge-naranja { background-color: #fff3e0; color: #c85e00; }
+.badge-gris    { background-color: #f0f0f0; color: var(--color-gris); }
+
+
+/* ============================================================
+   6. GALERÍA DE IMÁGENES (eventos pasados)
+   ============================================================ */
+
+.galeria-imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.galeria-imagen:hover {
+  transform: scale(1.02);
+}
+
+
+/* ============================================================
+   7. FORMULARIO DE CONTACTO
+   ============================================================ */
+
+.campo-formulario:focus {
+  outline: none;
+  border-color: var(--color-rosa);
+  box-shadow: 0 0 0 3px rgba(186,0,124,0.1);
+}
+
+
+/* ============================================================
+   8. UTILIDADES GENERALES
+   ============================================================ */
+
+.texto-rosa { color: var(--color-rosa); }
+
+.enlace-evento {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-rosa);
+  text-decoration: none;
+}
+
+.enlace-evento:hover {
+  text-decoration: underline;
 }

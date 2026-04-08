@@ -1,0 +1,57 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Hero — círculos decorativos de fondo */
+.hero-bg {
+  background: #0c0c1d;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 70px solid rgba(186, 0, 124, 0.07);
+  top: -150px;
+  right: 80px;
+}
+
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  border: 40px solid rgba(0, 155, 219, 0.06);
+  top: -30px;
+  right: 200px;
+}
+
+/* Cards — animación hover */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Nav — línea activa bajo el ítem seleccionado */
+.nav-link {
+  position: relative;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: #ba007c;
+}

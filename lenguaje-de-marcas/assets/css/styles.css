@@ -1,61 +1,37 @@
-/* ============================================================
-   HAPPINESS & CO — Hoja de estilos principal
-   Archivo: assets/css/styles.css
-   ============================================================ */
+/* 1. TIPOGRAFÍA */
 
-
-/* ============================================================
-   1. TIPOGRAFÍA
-   ============================================================ */
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+/* Importo tipografía y grosores*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
 
 body {
   font-family: 'Montserrat', sans-serif;
 }
 
 
-/* ============================================================
-   2. COLORES CORPORATIVOS — Variables CSS reutilizables
-   Uso: var(--color-rosa), var(--color-azul), etc.
-   ============================================================ */
-
-:root {
-  --color-rosa:    #ba007c;
-  --color-azul:    #009bdb;
-  --color-naranja: #ff7b00;
-  --color-gris:    #555555;
-}
-
-
-/* ============================================================
-   3. NAVEGACIÓN
-   ============================================================ */
+/* 2. MENÚ DE NAVEGACIÓN */
 
 /* Enlace activo del nav */
 .nav-link-activo {
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 4px;
 }
 
 
-/* ============================================================
-   4. HERO — Sección principal con imagen de fondo
-   ============================================================ */
+/* 3. HERO: SECCIÓN PRINCIPAL CON IMAGEN DE FONDO */
 
-/* Contenedor principal del hero */
+/* Ajustes del contenedor principal del hero donde ira la imagen y demás elementos */
 .hero {
   background-color: #0c0c1d;
   position: relative;
   overflow: hidden;
-  min-height: 380px;
+  min-height: 550px;
   display: flex;
   align-items: flex-end;
   width: 100%;
 }
 
-/* Imagen de fondo — cubre todo el contenedor */
+/* Ajustes de la imagen de fondo rotatoria */
 .hero-imagen {
   position: absolute;
   top: 0;
@@ -63,8 +39,8 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
-  opacity: 0.45;
+  object-position: center top;
+  opacity: 0.60;
 }
 
 /* Degradado oscuro abajo para que el texto sea legible */
@@ -73,21 +49,36 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 60%;
+  height: 50%;
   background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+  z-index: 1;
 }
 
-/* Contenido del hero — encima de la imagen */
+/* Contenido del hero: etiqueta categoria, titulo, fecha y botón ver evento*/
 .hero-contenido {
   position: relative;
   z-index: 2;
   width: 100%;
 }
+/* Transición de aparición del contenido del hero */
+.hero-contenido {
+  animation: fadeInUp 0.6s ease;
+}
 
-/* Badge de categoría (MÚSICA, EXPOSICIÓN...) */
-.hero-badge {
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ajustes etiqueta genérica (música, exposición...) */
+.hero-etiqueta {
   display: inline-block;
-  background-color: var(--color-rosa);
   color: white;
   font-size: 0.7rem;
   font-weight: 600;
@@ -96,6 +87,20 @@ body {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   margin-bottom: 8px;
+}
+
+/* Colores de las etiquetas según categoría */
+.etiqueta-pink { 
+  background-color: #ba007c;
+}
+.etiqueta-blue {
+   background-color: #009bdb;
+  }
+.etiqueta-orange { 
+  background-color: #ff7b00;
+}
+.etiqueta-gray { 
+  background-color: #555555;
 }
 
 /* Puntos indicadores del carrusel */
@@ -109,12 +114,13 @@ body {
   transition: background-color 0.3s ease;
 }
 
+/* Punto en el que te encuentras del carrusel */
 .hero-dot.activo {
   background-color: white;
 }
 
-/* Botones anterior/siguiente */
-.hero-btn-nav {
+/* Flechas para moverte por el carrusel */
+.hero-flecha-nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -132,14 +138,12 @@ body {
   transition: background-color 0.2s ease;
 }
 
-.hero-btn-nav:hover {
+.hero-flecha-nav:hover {
   background-color: rgba(255,255,255,0.4);
 }
 
 
-/* ============================================================
-   5. CARDS DE EVENTOS
-   ============================================================ */
+/* 4. CARDS DE EVENTOS */
 
 /* Animación al pasar el ratón */
 .card-evento {
@@ -161,13 +165,13 @@ body {
 }
 
 /* Barras de color inferior según categoría */
-.barra-rosa    { background-color: var(--color-rosa); }
-.barra-azul    { background-color: var(--color-azul); }
-.barra-naranja { background-color: var(--color-naranja); }
-.barra-gris    { background-color: var(--color-gris); }
+.barra-pink    { background-color: #ba007c; }
+.barra-blue   { background-color: #009bdb; }
+.barra-orange { background-color: #ff7b00; }
+.barra-gray    { background-color: #555555; }
 
-/* Badges de categoría en las cards */
-.card-badge {
+/* Etiqueta de categoría dentro de la card */
+.card-etiqueta {
   position: absolute;
   top: 10px;
   left: 10px;
@@ -177,15 +181,7 @@ body {
   border-radius: 10px;
 }
 
-.badge-rosa    { background-color: #fce4f4; color: var(--color-rosa); }
-.badge-azul    { background-color: #e3f2fd; color: #0077b3; }
-.badge-naranja { background-color: #fff3e0; color: #c85e00; }
-.badge-gris    { background-color: #f0f0f0; color: var(--color-gris); }
-
-
-/* ============================================================
-   6. GALERÍA DE IMÁGENES (eventos pasados)
-   ============================================================ */
+/* 5. GALERÍA DE IMÁGENES — Eventos pasados */
 
 .galeria-imagen {
   width: 100%;
@@ -202,27 +198,22 @@ body {
 }
 
 
-/* ============================================================
-   7. FORMULARIO DE CONTACTO
-   ============================================================ */
+/* 6. FORMULARIO DE CONTACTO */
 
 .campo-formulario:focus {
   outline: none;
-  border-color: var(--color-rosa);
+  border-color: #ba007c;
   box-shadow: 0 0 0 3px rgba(186,0,124,0.1);
 }
 
 
-/* ============================================================
-   8. UTILIDADES GENERALES
-   ============================================================ */
+/* 7. UTILIDADES GENERALES */
 
-.texto-rosa { color: var(--color-rosa); }
-
+/* Enlace "Ver evento →" de las cards */
 .enlace-evento {
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--color-rosa);
+  color: #ba007c;
   text-decoration: none;
 }
 

@@ -1,533 +1,634 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inicio — Happiness & Co</title>
-  <meta name="description" content="Happiness & Co — Agenda cultural de eventos de música, teatro, exposiciones y deporte">
-
-  <!-- Tailwind CSS — framework de utilidades CSS (no requiere instalación) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Configuración de colores corporativos en Tailwind -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'corp-pink':'#ba007c',
-            'corp-blue':'#009bdb',
-            'corp-orange':'#ff7b00',
-            'corp-gray':'#555555',
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio — Happiness & Co</title>
+    <meta
+      name="description"
+      content="Happiness & Co — Agenda cultural de eventos de música, teatro, exposiciones y deporte"
+    />
+    <!-- Link a estilos del CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <!-- Tailwind CSS (sin instalación) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuración de colores corporativos en Tailwind -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "corp-pink": "#ba007c",
+              "corp-blue": "#009bdb",
+              "corp-orange": "#ff7b00",
+              "corp-gray": "#555555",
+            },
+            fontFamily: {
+              sans: ["Montserrat", "sans-serif"],
+            },
           },
-          fontFamily: {
-            sans: ['Montserrat', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
+        },
+      };
+    </script>
+  </head>
 
-  <!-- Estilos propios del proyecto -->
-  <link rel="stylesheet" href="assets/css/styles.css">
-</head>
-
-<body class="bg-gray-50 text-gray-800">
-
-
-  <!-- ============================================================
-       NAVEGACIÓN PRINCIPAL
-       - Logo a la izquierda
-       - Enlaces a la derecha (ocultos en móvil, visibles en desktop)
-       - Botón hamburguesa en móvil
-       ============================================================ -->
-  <nav class="bg-corp-pink text-white sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-
-      <!-- Logo -->
-      <a href="index.html" class="text-xl font-bold tracking-tight">
-        Happiness &amp; Co
+  <body class="bg-gray-50 text-corp-pink">
+    <!-- MENÚ NAVEGACIÓN (Toda la barra entera) -->
+    <nav class="bg-corp-pink text-white sticky top-0 z-50 flex items-stretch">
+      <!-- Logo sobre fondo blanco -->
+      <a href="index.html" class="flex items-center bg-gray-50 px-20">
+        <img
+          src="assets/images/logo/logo-amp.webp"
+          alt="Happiness & Co"
+          class="h-10 w-auto"
+        />
       </a>
 
-      <!-- Botón hamburguesa — solo visible en móvil (md:hidden) -->
-      <button id="menu-btn" class="md:hidden" aria-label="Abrir menú">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      <!-- Zona rosa: nombre + enlaces nav -->
+      <div class="flex-1 max-w-7xl flex items-center justify-between px-6 py-3">
+        <!-- Nombre de la empresa -->
+        <h1 class="text-xl font-bold tracking-tight">Happiness &amp; Co</h1>
+
+        <!-- Botón hamburguesa, 3 rayitas blancas solo visible en formato móvil (md:hidden) -->
+        <!-- Al hacer clic abre/cierra el menú móvil mediante JS -->
+        <button id="menu-boton" class="md:hidden" aria-label="Abrir menú">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+
+        <!-- Enlaces a páginas en el desktop, ocultos en móvil, visibles desde md (768px) -->
+        <ul
+          id="menu-desktop"
+          class="hidden md:flex items-center gap-6 text-sm list-none"
+        >
+          <!-- Clase nav-link-activo creada en CSS -->
+          <li><a href="index.html" class="nav-link-activo">Inicio</a></li>
+          <li><a href="eventos.html" class="hover:underline font-bold">Eventos</a></li>
+          <li>
+            <a href="historial.html" class="hover:underline font-bold">Historial</a>
+          </li>
+          <li><a href="about-us.html" class="hover:underline font-bold">About Us</a></li>
+          <li><a href="contacto.html" class="hover:underline font-bold">Contacto</a></li>
+          <li><a href="fuentes.html" class="hover:underline font-bold">Fuentes</a></li>
+        </ul>
+
+        <!-- Menú móvil, oculto por defecto, se abre con el botón hamburguesa -->
+        <ul
+          id="menu-movil"
+          class="hidden md:hidden px-6 pb-4 flex-col gap-3 text-sm"
+        >
+          <li><a href="index.html" class="nav-link-activo">Inicio</a></li>
+          <!-- Clase definida en styles.css para resaltar el enlace activo -->
+          <li><a href="eventos.html" class="hover:underline font-bold">Eventos</a></li>
+          <li>
+            <a href="historial.html" class="hover:underline font-bold">Historial</a>
+          </li>
+          <li><a href="about-us.html" class="hover:underline font-bold">About Us</a></li>
+          <li><a href="contacto.html" class="hover:underline font-bold">Contacto</a></li>
+          <li><a href="fuentes.html" class="hover:underline font-bold">Fuentes</a></li>
+        </ul>
+      </div>
+      <!-- Acaba la sección rosa del menú -->
+    </nav>
+    <!-- Acaba el menú de navegación completo (blanco + rosa) -->
+
+    <!-- IMAGEN PRINCIPAL / HERO CARRUSEL -->
+    <section class="hero" id="hero-carrusel">
+
+      <!-- ---- SLIDE 1: Karol G ---- -->
+
+    <div class="hero-slide hidden w-full">
+        <img
+          src="assets/images/cartel-karol.jpg"
+          alt="Mañana será bonito tour — Karol G"
+          class="hero-imagen"
+        />
+        <div class="hero-overlay"></div>
+        <div class="hero-contenido max-w-7xl mx-auto px-6 py-10">
+          <p class="hero-etiqueta etiqueta-pink">Música</p>
+          <h2
+            class="text-3xl md:text-4xl font-semibold text-white leading-tight mb-2"
+          >
+            Mañana Será Bonito Tour — Karol G
+          </h2>
+          <p class="text-sm text-white/60 mb-5">
+            25 de agosto de 2025 · Santiago Bernabéu, Madrid
+          </p>
+          <a
+            href="karolg.html"
+            class="inline-block bg-corp-pink text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:scale-105 transition-transform uppercase tracking-wider"
+          >
+          Ver evento ➜
+          </a>
+        </div>
+      </div>
+
+      <!-- ---- SLIDE 2: El Circo de los Horrores ---- -->
+
+      <div class="hero-slide hidden w-full">
+        <img
+          src="assets/images/cartel2-prison.webp"
+          alt="Prisión IA — El Circo de los Horrores"
+          class="hero-imagen object-center"
+        />
+        <div class="hero-overlay"></div>
+        <div class="hero-contenido max-w-7xl mx-auto px-6 py-10">
+          <p class="hero-etiqueta etiqueta-blue">Teatro</p>
+          <h2
+            class="text-3xl md:text-4xl font-semibold text-white leading-tight mb-2"
+          >
+            Prisión IA - El Circo de los Horrores
+          </h2>
+          <p class="text-sm text-white/60 mb-5">12 de enero de 2026 · Gijón</p>
+          <a
+            href="prision-ia.html"
+            class="inline-block bg-corp-blue text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:scale-105 transition-transform uppercase tracking-wider"
+          >
+          Ver evento ➜
+          </a>
+        </div>
+      </div>
+
+      <!-- ---- SLIDE 3: Final Four BCL ---- -->
+
+     <div class="hero-slide hidden w-full">
+      <!-- El atributo style es CSS en línea para subir más aún la imagen -->
+        <img
+          src="assets/images/cartel-final-four.jpeg"
+          alt="Final Four Basketball Champions League"
+          style="object-position: center 20%;"
+          class="hero-imagen object-top"
+        />
+        <div class="hero-overlay"></div>
+        <div class="hero-contenido max-w-7xl mx-auto px-6 py-10">
+          <p class="hero-etiqueta etiqueta-gray">Deporte</p>
+          <h2
+            class="text-3xl md:text-4xl font-semibold text-white leading-tight mb-2"
+          >
+            Final Four - Basketball Champions League
+          </h2>
+          <p class="text-sm text-white/60 mb-5">
+            24 de enero de 2026 · Badalona
+          </p>
+          <a
+            href="finalfour.html"
+            class="inline-block bg-corp-gray text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:scale-105 transition-transform uppercase tracking-wider"
+          >
+          Ver evento ➜
+          </a>
+        </div>
+      </div>
+
+      <!-- ---- SLIDE 4: Cleopatra ---- -->
+
+      <div class="hero-slide hidden w-full">
+        <img
+          src="assets/images/cleopatra.jpg"
+          alt="Cleopatra, la exposición inmersiva"
+          class="hero-imagen"
+        />
+        <div class="hero-overlay"></div>
+        <div class="hero-contenido max-w-7xl mx-auto px-6 py-10">
+          <span class="hero-badge">Exposición</span>
+          <h2
+            class="text-3xl md:text-4xl font-semibold text-white leading-tight mb-2"
+          >
+            Cleopatra, la exposición inmersiva
+          </h2>
+          <p class="text-sm text-white/60 mb-5">
+            5 de junio de 2026 · MAD Madrid
+          </p>
+          <a
+            href="evento-cleopatra.html"
+            class="inline-block bg-corp-pink text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity"
+          >
+            Ver evento →
+          </a>
+        </div>
+      </div>
+
+      <!-- ---- SLIDE 5: Hannah Montana ---- -->
+      <div class="hero-slide hidden w-full">
+        <img
+          src="assets/images/hannah-montana.jpg"
+          alt="Especial Hannah Montana 20 Aniversario"
+          class="hero-imagen"
+        />
+        <div class="hero-overlay"></div>
+        <div class="hero-contenido max-w-7xl mx-auto px-6 py-10">
+          <span class="hero-badge">Cine</span>
+          <h2
+            class="text-3xl md:text-4xl font-semibold text-white leading-tight mb-2"
+          >
+            Especial Hannah Montana 20 Aniversario
+          </h2>
+          <p class="text-sm text-white/60 mb-5">
+            15 de junio de 2026 · Disney+
+          </p>
+          <a
+            href="evento-hannah.html"
+            class="inline-block bg-corp-pink text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity"
+          >
+            Ver evento →
+          </a>
+        </div>
+      </div>
+
+      <!-- ---- SLIDE 6: The Tile Project ---- -->
+
+       <!-- Slide del carrusel para js, oculto hasta que se active por js -->
+      <div class="hero-slide hidden w-full">
+        <!-- Imagen de fondo del evento -->
+        <img 
+          src="assets/images/tile-portada.jpg"
+          alt="The Tile Project"
+          class="hero-imagen object-top"
+        />
+        <!-- Degradado para legibilidad del texto -->
+        <div class="hero-overlay"></div>
+        <!-- Texto del evento -->
+        <div class="hero-contenido max-w-7xl mx-auto px-6 py-10">
+          <p class="hero-etiqueta etiqueta-orange">Exposición</p>
+          <h2
+            class="text-3xl md:text-4xl font-semibold text-white leading-tight mb-2"
+          >
+            The Tile Project - Azulejos, Vaques y el Nano 
+          </h2>
+          <p class="text-sm text-white/60 mb-5">1 de enero de 2026 · Oviedo</p>
+          <a
+            href="tileproject.html"
+            class="inline-block bg-corp-orange text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:scale-105 transition-transform uppercase tracking-wider"
+          >
+          Ver evento ➜
+          </a>
+        </div>
+      </div>
+
+      <!-- ---- SLIDE 7: Salmon Trail ---- -->
+      <div class="hero-slide hidden w-full">
+        <img
+          src="assets/images/salmon-trail.jpg"
+          alt="Salmon Trail Cornellana"
+          class="hero-imagen"
+        />
+        <div class="hero-overlay"></div>
+        <div class="hero-contenido max-w-7xl mx-auto px-6 py-10">
+          <span class="hero-badge">Deporte</span>
+          <h2
+            class="text-3xl md:text-4xl font-semibold text-white leading-tight mb-2"
+          >
+            Salmon Trail Cornellana
+          </h2>
+          <p class="text-sm text-white/60 mb-5">
+            25 de junio de 2026 · Salas, Asturias
+          </p>
+          <a
+            href="evento-salmon.html"
+            class="inline-block bg-corp-pink text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity"
+          >
+            Ver evento →
+          </a>
+        </div>
+      </div>
+
+      <!-- ---- SLIDE 8: Anastacia ---- -->
+      <div class="hero-slide hidden w-full">
+        <img
+          src="assets/images/anastacia.jpg"
+          alt="#NTKTOUR2026 — Anastacia"
+          class="hero-imagen"
+        />
+        <div class="hero-overlay"></div>
+        <div class="hero-contenido max-w-7xl mx-auto px-6 py-10">
+          <span class="hero-badge">Música</span>
+          <h2
+            class="text-3xl md:text-4xl font-semibold text-white leading-tight mb-2"
+          >
+            #NTKTOUR2026 — Anastacia
+          </h2>
+          <p class="text-sm text-white/60 mb-5">
+            24 de octubre de 2026 · Gijón Arena
+          </p>
+          <a
+            href="evento-anastacia.html"
+            class="inline-block bg-corp-pink text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity"
+          >
+            Ver evento →
+          </a>
+        </div>
+      </div>
+
+      <!-- Botón anterior -->
+      <button
+        id="hero-anterior"
+        class="hero-flecha-nav"
+        style="left: 16px"
+        aria-label="Evento anterior"
+      >
+        <svg
+          class="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"
+          />
         </svg>
       </button>
 
-      <!-- Enlaces desktop — ocultos en móvil, visibles desde md (768px) -->
-      <div id="menu-desktop" class="hidden md:flex items-center gap-6 text-sm">
-        <a href="index.html"     class="nav-link-activo">Inicio</a>
-        <a href="eventos.html"   class="hover:underline">Eventos</a>
-        <a href="historial.html" class="hover:underline">Historial</a>
-        <a href="about-us.html"  class="hover:underline">Nosotros</a>
-        <a href="contacto.html"  class="hover:underline">Contacto</a>
-        <a href="fuentes.html"   class="hover:underline">Fuentes</a>
-      </div>
-    </div>
-
-    <!-- Menú móvil — oculto por defecto, se abre con el botón hamburguesa -->
-    <div id="menu-movil" class="hidden md:hidden px-6 pb-4 flex flex-col gap-3 text-sm">
-      <a href="index.html"     class="nav-link-activo">Inicio</a>
-      <a href="eventos.html"   class="hover:underline">Eventos</a>
-      <a href="historial.html" class="hover:underline">Historial</a>
-      <a href="about-us.html"  class="hover:underline">Nosotros</a>
-      <a href="contacto.html"  class="hover:underline">Contacto</a>
-      <a href="fuentes.html"   class="hover:underline">Fuentes</a>
-    </div>
-  </nav>
-
-
-  <!-- ============================================================
-       HERO CARRUSEL
-       - Ocupa todo el ancho disponible
-       - Muestra un evento a la vez con su imagen de fondo
-       - Rota automáticamente (controlado por hero.js)
-       - Botones anterior/siguiente y puntos indicadores
-       ============================================================ -->
-  <section class="hero" id="hero-carrusel">
-
-    <!-- ---- SLIDE 1: The Tile Project ---- -->
-    <div class="hero-slide hidden w-full">
-      <!-- Imagen de fondo del evento -->
-      <img
-        src="assets/images/tile-project.jpg"
-        alt="The Tile Project"
-        class="hero-imagen"
+      <!-- Botón siguiente -->
+      <button
+        id="hero-siguiente"
+        class="hero-flecha-nav"
+        style="right: 16px"
+        aria-label="Evento siguiente"
       >
-      <!-- Degradado para legibilidad del texto -->
-      <div class="hero-overlay"></div>
-      <!-- Texto del evento -->
-      <div class="hero-contenido max-w-7xl mx-auto px-6 py-10">
-        <span class="hero-badge">Exposición</span>
-        <h2 class="text-3xl md:text-4xl font-semibold text-white leading-tight mb-2">
-          Azulejos, Vaques y el Nano — The Tile Project
-        </h2>
-        <p class="text-sm text-white/60 mb-5">1 de enero de 2026 · Oviedo</p>
-        <a href="evento-tileproject.html" class="inline-block bg-corp-pink text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity">
-          Ver evento →
-        </a>
-      </div>
-    </div>
+        <svg
+          class="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"
+          />
+        </svg>
+      </button>
 
-    <!-- ---- SLIDE 2: El Circo de los Horrores ---- -->
-    <div class="hero-slide hidden w-full">
-      <img
-        src="assets/images/circo-horrores.jpg"
-        alt="Prisión IA — El Circo de los Horrores"
-        class="hero-imagen"
-      >
-      <div class="hero-overlay"></div>
-      <div class="hero-contenido max-w-7xl mx-auto px-6 py-10">
-        <span class="hero-badge">Teatro</span>
-        <h2 class="text-3xl md:text-4xl font-semibold text-white leading-tight mb-2">
-          Prisión IA — El Circo de los Horrores
-        </h2>
-        <p class="text-sm text-white/60 mb-5">12 de enero de 2026 · Gijón</p>
-        <a href="evento-circo.html" class="inline-block bg-corp-pink text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity">
-          Ver evento →
-        </a>
-      </div>
-    </div>
+      <!-- Puntos indicadores — generados por hero.js -->
+      <div
+        id="hero-puntos"
+        class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10"
+      ></div>
+    </section>
 
-    <!-- ---- SLIDE 3: Final Four BCL ---- -->
-    <div class="hero-slide hidden w-full">
-      <img
-        src="assets/images/final-four.jpg"
-        alt="Final Four Basketball Champions League"
-        class="hero-imagen"
-      >
-      <div class="hero-overlay"></div>
-      <div class="hero-contenido max-w-7xl mx-auto px-6 py-10">
-        <span class="hero-badge">Deporte</span>
-        <h2 class="text-3xl md:text-4xl font-semibold text-white leading-tight mb-2">
-          Final Four — Basketball Champions League
-        </h2>
-        <p class="text-sm text-white/60 mb-5">24 de enero de 2026 · Badalona</p>
-        <a href="evento-finalfour.html" class="inline-block bg-corp-pink text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity">
-          Ver evento →
-        </a>
-      </div>
-    </div>
-
-    <!-- ---- SLIDE 4: Karol G ---- -->
-    <div class="hero-slide hidden w-full">
-      <img
-        src="assets/images/karol-g.jpg"
-        alt="Mañana será bonito tour — Karol G"
-        class="hero-imagen"
-      >
-      <div class="hero-overlay"></div>
-      <div class="hero-contenido max-w-7xl mx-auto px-6 py-10">
-        <span class="hero-badge">Música</span>
-        <h2 class="text-3xl md:text-4xl font-semibold text-white leading-tight mb-2">
-          Mañana será bonito tour — Karol G
-        </h2>
-        <p class="text-sm text-white/60 mb-5">25 de agosto de 2025 · Santiago Bernabéu, Madrid</p>
-        <a href="evento-karolg.html" class="inline-block bg-corp-pink text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity">
-          Ver evento →
-        </a>
-      </div>
-    </div>
-
-    <!-- ---- SLIDE 5: Cleopatra ---- -->
-    <div class="hero-slide hidden w-full">
-      <img
-        src="assets/images/cleopatra.jpg"
-        alt="Cleopatra, la exposición inmersiva"
-        class="hero-imagen"
-      >
-      <div class="hero-overlay"></div>
-      <div class="hero-contenido max-w-7xl mx-auto px-6 py-10">
-        <span class="hero-badge">Exposición</span>
-        <h2 class="text-3xl md:text-4xl font-semibold text-white leading-tight mb-2">
-          Cleopatra, la exposición inmersiva
-        </h2>
-        <p class="text-sm text-white/60 mb-5">5 de junio de 2026 · MAD Madrid</p>
-        <a href="evento-cleopatra.html" class="inline-block bg-corp-pink text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity">
-          Ver evento →
-        </a>
-      </div>
-    </div>
-
-    <!-- ---- SLIDE 6: Hannah Montana ---- -->
-    <div class="hero-slide hidden w-full">
-      <img
-        src="assets/images/hannah-montana.jpg"
-        alt="Especial Hannah Montana 20 Aniversario"
-        class="hero-imagen"
-      >
-      <div class="hero-overlay"></div>
-      <div class="hero-contenido max-w-7xl mx-auto px-6 py-10">
-        <span class="hero-badge">Cine</span>
-        <h2 class="text-3xl md:text-4xl font-semibold text-white leading-tight mb-2">
-          Especial Hannah Montana 20 Aniversario
-        </h2>
-        <p class="text-sm text-white/60 mb-5">15 de junio de 2026 · Disney+</p>
-        <a href="evento-hannah.html" class="inline-block bg-corp-pink text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity">
-          Ver evento →
-        </a>
-      </div>
-    </div>
-
-    <!-- ---- SLIDE 7: Salmon Trail ---- -->
-    <div class="hero-slide hidden w-full">
-      <img
-        src="assets/images/salmon-trail.jpg"
-        alt="Salmon Trail Cornellana"
-        class="hero-imagen"
-      >
-      <div class="hero-overlay"></div>
-      <div class="hero-contenido max-w-7xl mx-auto px-6 py-10">
-        <span class="hero-badge">Deporte</span>
-        <h2 class="text-3xl md:text-4xl font-semibold text-white leading-tight mb-2">
-          Salmon Trail Cornellana
-        </h2>
-        <p class="text-sm text-white/60 mb-5">25 de junio de 2026 · Salas, Asturias</p>
-        <a href="evento-salmon.html" class="inline-block bg-corp-pink text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity">
-          Ver evento →
-        </a>
-      </div>
-    </div>
-
-    <!-- ---- SLIDE 8: Anastacia ---- -->
-    <div class="hero-slide hidden w-full">
-      <img
-        src="assets/images/anastacia.jpg"
-        alt="#NTKTOUR2026 — Anastacia"
-        class="hero-imagen"
-      >
-      <div class="hero-overlay"></div>
-      <div class="hero-contenido max-w-7xl mx-auto px-6 py-10">
-        <span class="hero-badge">Música</span>
-        <h2 class="text-3xl md:text-4xl font-semibold text-white leading-tight mb-2">
-          #NTKTOUR2026 — Anastacia
-        </h2>
-        <p class="text-sm text-white/60 mb-5">24 de octubre de 2026 · Gijón Arena</p>
-        <a href="evento-anastacia.html" class="inline-block bg-corp-pink text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity">
-          Ver evento →
-        </a>
-      </div>
-    </div>
-
-    <!-- Botón anterior -->
-    <button id="hero-anterior" class="hero-btn-nav" style="left: 16px;" aria-label="Evento anterior">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-      </svg>
-    </button>
-
-    <!-- Botón siguiente -->
-    <button id="hero-siguiente" class="hero-btn-nav" style="right: 16px;" aria-label="Evento siguiente">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-      </svg>
-    </button>
-
-    <!-- Puntos indicadores — generados por hero.js -->
-    <div id="hero-puntos" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10"></div>
-
-  </section>
-
-
-  <!-- ============================================================
+    <!-- ============================================================
        CONTENIDO PRINCIPAL
        - Columna izquierda: grid de próximos eventos
        - Columna derecha: sidebar de recomendados
        ============================================================ -->
-  <main class="max-w-7xl mx-auto px-6 py-10">
-    <div class="flex flex-col lg:flex-row gap-10">
+    <main class="max-w-7xl mx-auto px-6 py-10">
+      <div class="flex flex-col lg:flex-row gap-10">
+        <!-- ---- PRÓXIMOS EVENTOS ---- -->
+        <section class="flex-1">
+          <!-- Título de sección con línea decorativa -->
+          <div class="separador-seccion">
+            <h2
+              class="text-xs font-semibold text-gray-400 uppercase tracking-widest"
+            >
+              Próximos eventos
+            </h2>
+          </div>
 
+          <!-- Grid de cards — 1 columna en móvil, 2 en tablet, 3 en desktop -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+            <!-- Card: Cleopatra -->
+            <article
+              class="card-evento bg-white rounded-xl border border-gray-100 overflow-hidden"
+            >
+              <div class="relative h-44 overflow-hidden">
+                <img
+                  src="assets/images/cleopatra.jpg"
+                  alt="Cleopatra, la exposición inmersiva"
+                  class="card-imagen"
+                />
+                <span class="card-badge badge-naranja">Exposición</span>
+                <div
+                  class="absolute bottom-0 left-0 right-0 h-1 barra-naranja"
+                ></div>
+              </div>
+              <div class="p-4">
+                <p class="text-xs text-gray-400 font-medium mb-1">
+                  05 jun 2026
+                </p>
+                <h3
+                  class="text-sm font-semibold text-gray-800 leading-snug mb-1"
+                >
+                  Cleopatra, la exposición inmersiva
+                </h3>
+                <p class="text-xs text-gray-500 leading-relaxed mb-3">
+                  Viaje multisensorial al Antiguo Egipto con proyecciones de
+                  360°.
+                </p>
+                <a href="evento-cleopatra.html" class="enlace-evento"
+                  >Ver evento →</a
+                >
+              </div>
+            </article>
 
-      <!-- ---- PRÓXIMOS EVENTOS ---- -->
-      <section class="flex-1">
+            <!-- Card: Hannah Montana -->
+            <article
+              class="card-evento bg-white rounded-xl border border-gray-100 overflow-hidden"
+            >
+              <div class="relative h-44 overflow-hidden">
+                <img
+                  src="assets/images/hannah-montana.jpg"
+                  alt="Hannah Montana 20 Aniversario"
+                  class="card-imagen"
+                  style="object-position: center bottom"
+                />
+                <span class="card-badge badge-azul">Cine</span>
+                <div
+                  class="absolute bottom-0 left-0 right-0 h-1 barra-azul"
+                ></div>
+              </div>
+              <div class="p-4">
+                <p class="text-xs text-gray-400 font-medium mb-1">
+                  15 jun 2026
+                </p>
+                <h3
+                  class="text-sm font-semibold text-gray-800 leading-snug mb-1"
+                >
+                  Hannah Montana 20 Aniversario
+                </h3>
+                <p class="text-xs text-gray-500 leading-relaxed mb-3">
+                  El docureality de la serie icónica que marcó una generación.
+                </p>
+                <a href="evento-hannah.html" class="enlace-evento"
+                  >Ver evento →</a
+                >
+              </div>
+            </article>
 
-        <!-- Título de sección con línea decorativa -->
-        <div class="separador-seccion">
-          <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest">Próximos eventos</h2>
-        </div>
+            <!-- Card: Salmon Trail -->
+            <article
+              class="card-evento bg-white rounded-xl border border-gray-100 overflow-hidden"
+            >
+              <div class="relative h-44 overflow-hidden">
+                <img
+                  src="assets/images/salmon-trail.jpg"
+                  alt="Salmon Trail Cornellana"
+                  class="card-imagen"
+                />
+                <span class="card-badge badge-gris">Deporte</span>
+                <div
+                  class="absolute bottom-0 left-0 right-0 h-1 barra-gris"
+                ></div>
+              </div>
+              <div class="p-4">
+                <p class="text-xs text-gray-400 font-medium mb-1">
+                  25 jun 2026
+                </p>
+                <h3
+                  class="text-sm font-semibold text-gray-800 leading-snug mb-1"
+                >
+                  Salmon Trail, Cornellana
+                </h3>
+                <p class="text-xs text-gray-500 leading-relaxed mb-3">
+                  Carrera de montaña por los senderos de Salas, Asturias.
+                </p>
+                <a href="evento-salmon.html" class="enlace-evento"
+                  >Ver evento →</a
+                >
+              </div>
+            </article>
+          </div>
+        </section>
 
-        <!-- Grid de cards — 1 columna en móvil, 2 en tablet, 3 en desktop -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+        <!-- ---- SIDEBAR: RECOMENDADOS ---- -->
+        <aside class="w-full lg:w-64 flex-shrink-0">
+          <div class="separador-seccion">
+            <h2
+              class="text-xs font-semibold text-gray-400 uppercase tracking-widest"
+            >
+              Recomendados
+            </h2>
+          </div>
 
-
-          <!-- Card: Cleopatra -->
-          <article class="card-evento bg-white rounded-xl border border-gray-100 overflow-hidden">
-            <!-- Imagen de la card -->
-            <div class="relative h-40 overflow-hidden">
-              <img
-                src="assets/images/cleopatra.jpg"
-                alt="Cleopatra, la exposición inmersiva"
-                class="card-imagen"
-              >
-              <!-- Badge de categoría -->
-              <span class="card-badge badge-naranja">Exposición</span>
-              <!-- Barra de color inferior -->
-              <div class="absolute bottom-0 left-0 right-0 h-1 barra-naranja"></div>
-            </div>
-            <!-- Información del evento -->
-            <div class="p-4">
-              <p class="text-xs text-gray-400 font-medium mb-1">05 jun 2026</p>
-              <h3 class="text-sm font-semibold text-gray-800 leading-snug mb-1">
-                Cleopatra, la exposición inmersiva
-              </h3>
-              <p class="text-xs text-gray-500 leading-relaxed mb-3">
-                Viaje multisensorial al Antiguo Egipto con proyecciones de 360°.
-              </p>
-              <a href="evento-cleopatra.html" class="enlace-evento">Ver evento →</a>
-            </div>
-          </article>
-
-
-          <!-- Card: Hannah Montana -->
-          <article class="card-evento bg-white rounded-xl border border-gray-100 overflow-hidden">
-            <div class="relative h-40 overflow-hidden">
-              <img
-                src="assets/images/hannah-montana.jpg"
-                alt="Especial Hannah Montana 20 Aniversario"
-                class="card-imagen"
-              >
-              <span class="card-badge badge-azul">Cine</span>
-              <div class="absolute bottom-0 left-0 right-0 h-1 barra-azul"></div>
-            </div>
-            <div class="p-4">
-              <p class="text-xs text-gray-400 font-medium mb-1">15 jun 2026</p>
-              <h3 class="text-sm font-semibold text-gray-800 leading-snug mb-1">
-                Especial Hannah Montana 20 Aniversario
-              </h3>
-              <p class="text-xs text-gray-500 leading-relaxed mb-3">
-                El docureality de la serie icónica que marcó una generación.
-              </p>
-              <a href="evento-hannah.html" class="enlace-evento">Ver evento →</a>
-            </div>
-          </article>
-
-
-          <!-- Card: Salmon Trail -->
-          <article class="card-evento bg-white rounded-xl border border-gray-100 overflow-hidden">
-            <div class="relative h-40 overflow-hidden">
-              <img
-                src="assets/images/salmon-trail.jpg"
-                alt="Salmon Trail Cornellana"
-                class="card-imagen"
-              >
-              <span class="card-badge badge-gris">Deporte</span>
-              <div class="absolute bottom-0 left-0 right-0 h-1 barra-gris"></div>
-            </div>
-            <div class="p-4">
-              <p class="text-xs text-gray-400 font-medium mb-1">25 jun 2026</p>
-              <h3 class="text-sm font-semibold text-gray-800 leading-snug mb-1">
-                Salmon Trail Cornellana
-              </h3>
-              <p class="text-xs text-gray-500 leading-relaxed mb-3">
-                Carrera de montaña por los senderos de Salas, Asturias.
-              </p>
-              <a href="evento-salmon.html" class="enlace-evento">Ver evento →</a>
-            </div>
-          </article>
-
-
-          <!-- Card: Anastacia -->
-          <article class="card-evento bg-white rounded-xl border border-gray-100 overflow-hidden">
-            <div class="relative h-40 overflow-hidden">
+          <div class="flex flex-col gap-4">
+            <!-- Recomendado: Anastacia -->
+            <a
+              href="evento-anastacia.html"
+              class="flex gap-3 group items-center"
+            >
               <img
                 src="assets/images/anastacia.jpg"
-                alt="#NTKTOUR2026 — Anastacia"
-                class="card-imagen"
+                alt="Anastacia Tour"
+                class="w-14 h-14 rounded-lg object-cover flex-shrink-0"
+              />
+              <p
+                class="text-xs font-semibold text-gray-700 group-hover:text-corp-pink transition-colors leading-snug"
               >
-              <span class="card-badge badge-rosa">Música</span>
-              <div class="absolute bottom-0 left-0 right-0 h-1 barra-rosa"></div>
-            </div>
-            <div class="p-4">
-              <p class="text-xs text-gray-400 font-medium mb-1">24 oct 2026</p>
-              <h3 class="text-sm font-semibold text-gray-800 leading-snug mb-1">
-                #NTKTOUR2026 — Anastacia
-              </h3>
-              <p class="text-xs text-gray-500 leading-relaxed mb-3">
-                La diva del pop regresa a España con su gira mundial.
+                Anastacia Tour
               </p>
-              <a href="evento-anastacia.html" class="enlace-evento">Ver evento →</a>
-            </div>
-          </article>
+            </a>
 
-
-        </div>
-      </section>
-
-
-      <!-- ---- SIDEBAR: RECOMENDADOS ---- -->
-      <!-- En móvil aparece debajo, en desktop a la derecha (lg:w-72) -->
-      <aside class="w-full lg:w-72 flex-shrink-0">
-
-        <div class="separador-seccion">
-          <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest">Recomendados</h2>
-        </div>
-
-        <div class="flex flex-col gap-4">
-
-          <!-- Recomendado: Anastacia -->
-          <a href="evento-anastacia.html" class="flex gap-3 group">
-            <img
-              src="assets/images/anastacia.jpg"
-              alt="Anastacia"
-              class="w-14 h-14 rounded-lg object-cover flex-shrink-0"
+            <!-- Recomendado: The Tile Project -->
+            <a
+              href="evento-tileproject.html"
+              class="flex gap-3 group items-center"
             >
-            <div>
-              <p class="text-xs text-gray-400 mb-0.5">24 oct 2026 · Música</p>
-              <p class="text-xs font-semibold text-gray-700 group-hover:text-corp-pink transition-colors leading-snug">
-                #NTKTOUR2026 — Anastacia
+              <img
+                src="assets/images/tile-project.jpg"
+                alt="The Tile Project"
+                class="w-14 h-14 rounded-lg object-cover flex-shrink-0"
+              />
+              <p
+                class="text-xs font-semibold text-gray-700 group-hover:text-corp-pink transition-colors leading-snug"
+              >
+                The Tile Project
               </p>
-            </div>
-          </a>
+            </a>
 
-          <!-- Recomendado: The Tile Project -->
-          <a href="evento-tileproject.html" class="flex gap-3 group">
-            <img
-              src="assets/images/tile-project.jpg"
-              alt="The Tile Project"
-              class="w-14 h-14 rounded-lg object-cover flex-shrink-0"
+            <!-- Recomendado: Final Four -->
+            <a
+              href="evento-finalfour.html"
+              class="flex gap-3 group items-center"
             >
-            <div>
-              <p class="text-xs text-gray-400 mb-0.5">01 ene 2026 · Exposición</p>
-              <p class="text-xs font-semibold text-gray-700 group-hover:text-corp-pink transition-colors leading-snug">
-                Azulejos, Vaques y el Nano — The Tile Project
+              <img
+                src="assets/images/final-four.jpg"
+                alt="Final Four BCL"
+                class="w-14 h-14 rounded-lg object-cover flex-shrink-0"
+              />
+              <p
+                class="text-xs font-semibold text-gray-700 group-hover:text-corp-pink transition-colors leading-snug"
+              >
+                Final Four BCL
               </p>
-            </div>
-          </a>
+            </a>
+          </div>
+        </aside>
+      </div>
+    </main>
 
-          <!-- Recomendado: Final Four -->
-          <a href="evento-finalfour.html" class="flex gap-3 group">
-            <img
-              src="assets/images/final-four.jpg"
-              alt="Final Four BCL"
-              class="w-14 h-14 rounded-lg object-cover flex-shrink-0"
-            >
-            <div>
-              <p class="text-xs text-gray-400 mb-0.5">24 ene 2026 · Deporte</p>
-              <p class="text-xs font-semibold text-gray-700 group-hover:text-corp-pink transition-colors leading-snug">
-                Final Four — Basketball Champions League
-              </p>
-            </div>
-          </a>
-
-          <!-- Recomendado: El Circo de los Horrores -->
-          <a href="evento-circo.html" class="flex gap-3 group">
-            <img
-              src="assets/images/circo-horrores.jpg"
-              alt="El Circo de los Horrores"
-              class="w-14 h-14 rounded-lg object-cover flex-shrink-0"
-            >
-            <div>
-              <p class="text-xs text-gray-400 mb-0.5">12 ene 2026 · Teatro</p>
-              <p class="text-xs font-semibold text-gray-700 group-hover:text-corp-pink transition-colors leading-snug">
-                Prisión IA — El Circo de los Horrores
-              </p>
-            </div>
-          </a>
-
-        </div>
-      </aside>
-
-
-    </div>
-  </main>
-
-
-  <!-- ============================================================
+    <!-- ============================================================
        FOOTER
        ============================================================ -->
-  <footer class="bg-gray-900 text-gray-400 text-xs mt-16">
-    <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+    <footer class="bg-gray-900 text-gray-400 text-xs mt-16">
+      <div
+        class="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4"
+      >
+        <!-- Copyright -->
+        <p>
+          &copy; 2026 Happiness &amp; Co &mdash; Todos los derechos reservados
+        </p>
 
-      <!-- Copyright -->
-      <p>&copy; 2026 Happiness &amp; Co &mdash; Todos los derechos reservados</p>
+        <!-- Iconos de redes sociales -->
+        <div class="flex gap-4">
+          <!-- Instagram -->
+          <a href="#" class="footer-icono" aria-label="Instagram">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+              />
+            </svg>
+          </a>
 
-      <!-- Iconos de redes sociales -->
-      <div class="flex gap-4">
+          <!-- Twitter / X -->
+          <a href="#" class="footer-icono" aria-label="Twitter">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+              />
+            </svg>
+          </a>
 
-        <!-- Instagram -->
-        <a href="#" class="footer-icono" aria-label="Instagram">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-          </svg>
-        </a>
-
-        <!-- Twitter / X -->
-        <a href="#" class="footer-icono" aria-label="Twitter">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-          </svg>
-        </a>
-
-        <!-- Facebook -->
-        <a href="#" class="footer-icono" aria-label="Facebook">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-          </svg>
-        </a>
-
+          <!-- Facebook -->
+          <a href="#" class="footer-icono" aria-label="Facebook">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+              />
+            </svg>
+          </a>
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer>
 
-
-  <!-- ============================================================
+    <!-- ============================================================
        JAVASCRIPT
        - Menú hamburguesa para móvil
        - Hero carrusel (en archivo separado)
        ============================================================ -->
 
-  <!-- Menú móvil: abre/cierra al pulsar el botón hamburguesa -->
-  <script>
-    document.getElementById('menu-btn').addEventListener('click', function () {
-      document.getElementById('menu-movil').classList.toggle('hidden');
-    });
-  </script>
+    <!-- Menú móvil: abre/cierra al pulsar el botón hamburguesa -->
+    <script>
+      document
+        .getElementById("menu-btn")
+        .addEventListener("click", function () {
+          document.getElementById("menu-movil").classList.toggle("hidden");
+        });
+    </script>
 
-  <!-- Hero carrusel — cargado desde archivo externo -->
-  <script src="assets/js/hero.js"></script>
-
-
-</body>
+    <!-- Hero carrusel — cargado desde archivo externo -->
+    <script src="assets/js/hero.js"></script>
+  </body>
 </html>

@@ -206,17 +206,3 @@ body {
   box-shadow: 0 0 0 3px rgba(186,0,124,0.1);
 }
 
-
-/* 7. UTILIDADES GENERALES */
-
-/* Enlace "Ver evento →" de las cards */
-.enlace-evento {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #ba007c;
-  text-decoration: none;
-}
-
-.enlace-evento:hover {
-  text-decoration: underline;
-}

@@ -170,7 +170,7 @@ body {
 .barra-orange { background-color: #ff7b00; }
 .barra-gray    { background-color: #555555; }
 
-/* Etiqueta de categoría dentro de la card */
+/* Ajustes de la etiqueta de categoría dentro de la card */
 .card-etiqueta {
   position: absolute;
   top: 10px;

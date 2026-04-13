@@ -86,53 +86,72 @@
     <main class="max-w-7xl mx-auto px-6 py-10">
 
 
-      <!-- ---- SECCIÓN SOBRE NOSOTROS ---- -->
-      <!-- Dos columnas: texto izquierda, imagen corporativa derecha -->
+    <!-- ---- SECCIÓN SOBRE NOSOTROS: TEXO + IMÁGENES INTERCALADAS ---- -->
+    <!-- Dos columnas: texto izquierda, imagen corporativa derecha -->
       <section class="flex flex-col lg:flex-row gap-12 mb-16" aria-label="Sobre nosotros">
 
-        <!-- Texto descriptivo -->
+        <!-- Texto descriptivo con imágenes intercaladas -->
         <div class="flex-1 text-justify">
           <h2 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-6">About Us</h2>
 
           <p class="text-gray-600 leading-relaxed mb-4">
-            <strong class="text-gray-900">Happiness &amp; Co</strong> es una empresa joven y dinámica
-            dedicada, en cuerpo y alma, al mundo del ocio. Perdidos entre la inmensa marea de actividades
-            culturales disponibles cada día en nuestro país, nos dimos cuenta de que hacía falta buscar
-            un poco de orden y estructura en este inmenso océano de posibilidades. 
+          <strong class="text-gray-900">Happiness &amp; Co</strong> es una empresa joven y dinámica
+          dedicada, en cuerpo y alma, al mundo del ocio. Perdidos entre la inmensa marea de actividades
+          culturales disponibles cada día en nuestro país, nos dimos cuenta de que hacía falta buscar
+          un poco de orden y estructura en este inmenso océano de posibilidades.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+          Y así surgió Happiness &amp; Co, una agenda cultural que desarrolla su actividad empresarial
+          en las instalaciones de  <strong class="text-gray-900">TuniverS Formación</strong>, estando en contacto directo con los alumnos y alumnas 
+          de esta prestigiosa institución educativa. Ellos nos aportan un montón de ideas frescas y energía para seguir creciendo y 
+          mejorando cada día.
+          </p>
 
-          </p>
-          <p class="text-gray-600 leading-relaxed mb-4">
-            Y así surgió Happiness &amp; Co, una agenda cultural que  recopila y organiza todos
-            los eventos culturales, de cualquier tipo, que tienen lugar en España. Desde conciertos y festivales,
-             hasta exposiciones, obras de teatro, eventos deportivos..
-          </p>
-          <p class="text-gray-600 leading-relaxed mb-4">
-            Con sede en Asturias, operamos a nivel nacional e internacional, colaborando con artistas,
-            deportistas y organizadores de todo el mundo para traer las mejores experiencias culturales
-            a nuestro público.
-          </p>
-          <p class="text-gray-600 leading-relaxed mb-4">
-            Nuestra misión es crear momentos inolvidables que conecten a las personas y que nos mantengan
-            interesados por salir de nuestra casa y compartir experiencias. 
-          </p>
-          <p class="text-gray-600 leading-relaxed mb-4">
-            Creemos que cada evento es una oportunidad para generar felicidad.
-          </p>
-        </div>
+          <!-- Imagen intercalada 1 (Emojis) -->
+        <div class="rounded-2xl overflow-hidden h-56 mb-6">
+          <img
+            src="assets/images/logo/happy.png"
+            alt="Es para ti — Happiness &amp; Co"
+            class="w-full h-full object-cover"
+            style="object-position: center 65%;">
+          />
+          </div>
 
-        <!-- Imagen corporativa -->
-        <div class="w-full lg:w-96 flex-shrink-0">
-          <div class="rounded-2xl overflow-hidden h-80 lg:h-full">
+          <p class="text-gray-600 leading-relaxed mb-4">
+          Con sede en Asturias, operamos a nivel nacional e internacional, colaborando con artistas,
+          deportistas y organizadores de todo el mundo para traer las mejores experiencias culturales
+          a nuestro público.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+          Nuestra misión es crear momentos inolvidables que conecten a las personas y que nos mantengan
+          interesados por salir de nuestra casa y compartir experiencias.
+          </p>
+
+          <!-- Imagen intercalada 2 (HAPPINESS)-->
+          <div class="rounded-2xl overflow-hidden h-56 mb-4 mt-12">
             <img
-              src="assets/images/logo/imagen-corporativa.jpg"
-              alt="Imagen corporativa Happiness &amp; Co"
-              class="w-full h-full object-cover"
+              src="assets/images/logo/logo-transparente.png"
+              alt="Happiness &amp; Co"
+              class="w-70 h-70"
             />
           </div>
+          <p class="text-gray-600 leading-relaxed mb-4">
+          Creemos que cada evento es una oportunidad para generar felicidad.
+           </p>
+        </div>
+
+        <!-- Imagen Intercalada 3 (Aula)-->
+        <div class="w-full lg:w-96 flex-shrink-0 self-start sticky top-24 pl-7">
+        <div class="rounded-2xl overflow-hidden h-80 lg:h-full">
+          <img
+            src="assets/images/logo/aula.png"
+            alt="Imagen corporativa Happiness &amp; Co"
+            class="w-70 h-70 object-cover"
+          />
+        </div>
         </div>
 
       </section>
-
 
       <!-- ---- SECCIÓN NUESTRO EQUIPO ---- -->
       <section aria-label="Nuestro equipo">
@@ -143,9 +162,9 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
           <!-- Card: Sara Pérez Rodríguez -->
-          <article class="bg-white rounded-2xl border border-corp-pink p-8 flex flex-col items-center text-center">
+          <article class="bg-white rounded-2xl border border-gray-200 p-8 flex flex-col items-center text-center">
             <!-- Círculo con iniciales -->
-            <div class="w-[180px] h-[180px] rounded-full bg-corp-pink flex items-center justify-center hover:scale-105 transition-transform duration-300 hover:shadow-lg mb-4">
+            <div class="w-[180px] h-[180px] rounded-full bg-white flex items-center justify-center hover:scale-105 transition-transform duration-300 hover:shadow-lg mb-4">
               <img
                 src="assets/images/team/sara.png"
                 alt="SP"
@@ -159,7 +178,7 @@
                 Cursando FP Superior DAW. 
               </p>
               <p class="text-sm text-gray-500 leading-relaxed">
-                Dando sus primeros pinitos en el mundo del desarrollo web.
+                Haciendo sus primeros pinitos en el mundo del desarrollo web.
               </p>
               <p class="text-sm text-gray-500 leading-relaxed">
                 Apasionada por crear interfaces accesibles y experiencias digitales de calidad.
@@ -168,9 +187,9 @@
           </article>
 
           <!-- Card: Johnny Ramírez -->
-          <article class="bg-white rounded-2xl border border-corp-blue p-8 flex flex-col items-center text-center">
+          <article class="bg-white rounded-2xl border border-gray-200 p-8 flex flex-col items-center text-center">
             <!-- Círculo con iniciales -->
-            <div class="w-[180px] h-[180px] rounded-full bg-corp-pink flex items-center justify-center hover:scale-105 transition-transform duration-300 hover:shadow-lg mb-4">
+            <div class="w-[180px] h-[180px] rounded-full bg-white flex items-center justify-center hover:scale-105 transition-transform duration-300 hover:shadow-lg mb-4">
               <img
                 src="assets/images/team/johnny.png"
                 alt="JR"
@@ -190,9 +209,9 @@
           </article>
 
           <!-- Card: Mario Álvarez -->
-          <article class="bg-white rounded-2xl border border-corp-orange p-8 flex flex-col items-center text-center">
+          <article class="bg-white rounded-2xl border border-gray-200 p-8 flex flex-col items-center text-center">
             <!-- Círculo con iniciales -->
-            <div class="w-[180px] h-[180px] rounded-full bg-corp-orange flex items-center justify-center hover:scale-105 transition-transform duration-300 hover:shadow-lg mb-4">
+            <div class="w-[180px] h-[180px] rounded-full bg-white flex items-center justify-center hover:scale-105 transition-transform duration-300 hover:shadow-lg mb-4">
               <img
                 src="assets/images/team/mario.png"
                 alt="MA"
@@ -213,9 +232,9 @@
           </article>
 
           <!-- Card: Delio Toliva -->
-          <article class="bg-white rounded-2xl border border-corp-gray p-8 flex flex-col items-center text-center">
+          <article class="bg-white rounded-2xl border border-gray-200 p-8 flex flex-col items-center text-center">
             <!-- Círculo con iniciales -->
-            <div class="w-[180px] h-[180px] rounded-full bg-corp-gray flex items-center justify-center hover:scale-105 transition-transform duration-300 hover:shadow-lg mb-4">
+            <div class="w-[180px] h-[180px] rounded-full bg-white flex items-center justify-center hover:scale-105 transition-transform duration-300 hover:shadow-lg mb-4">
               <img
                 src="assets/images/team/delio.png"
                 alt="DT"
@@ -223,7 +242,7 @@
             </div>
             <!-- Información -->
             <div>
-              <h3 class="text-lg font-bold text-gray-900 mb-1">Delio Toliva</h3>
+              <h3 class="text-lg font-bold text-gray-900 mb-1">Delio Tolivia</h3>
               <p class="text-sm font-semibold text-corp-gray mb-3">Co-Fundador &amp; IT Manager</p>
               <p class="text-sm text-gray-500 leading-relaxed">
                 Licenciado en Ingeniería Informática y Biología. </p>

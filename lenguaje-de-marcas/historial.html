@@ -3,25 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mañana Será Bonito Tour — Karol G · Happiness &amp; Co</title>
+    <title>Historial — Happiness &amp; Co</title>
     <meta
       name="description"
-      content="Mañana Será Bonito Tour — Karol G. Concierto en el Santiago Bernabéu, Madrid."
+      content="Happiness &amp; Co — Historial de eventos culturales de música, teatro, exposiciones y deporte"
     />
-    <!-- Estilos propios -->
+    <!-- Link a estilos del CSS -->
     <link rel="stylesheet" href="assets/css/styles.css" />
     <!-- Tailwind CSS (sin instalación) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Colores corporativos en Tailwind -->
+    <!-- Configuración de colores corporativos en Tailwind -->
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              "corp-pink":   "#ba007c",
-              "corp-blue":   "#009bdb",
+              "corp-pink": "#ba007c",
+              "corp-blue": "#009bdb",
               "corp-orange": "#ff7b00",
-              "corp-gray":   "#555555",
+              "corp-gray": "#555555",
             },
             fontFamily: {
               sans: ["Montserrat", "sans-serif"],
@@ -32,9 +32,9 @@
     </script>
   </head>
 
-  <body class="bg-gray-50 text-gray-800">
+  <body class="bg-gray-50 text-corp-pink">
 
-    <!-- MENÚ DE NAVEGACIÓN (Común a todas las páginas) -->
+    <!-- MENÚ NAVEGACIÓN (Toda la barra entera) -->
     <nav class="bg-corp-pink text-white sticky top-0 z-50 flex items-stretch">
 
       <!-- Logo sobre fondo blanco -->
@@ -46,8 +46,8 @@
         />
       </a>
 
-      <!-- Zona rosa: nombre + enlaces -->
-      <div class="flex-1 flex items-center justify-between px-6 py-3">
+      <!-- Zona rosa: nombre + enlaces nav -->
+      <div class="flex-1 max-w-7xl flex items-center justify-between px-6 py-3">
 
         <h1 class="text-xl font-bold tracking-tight">Happiness &amp; Co</h1>
 
@@ -68,141 +68,139 @@
           <li><a href="fuentes.html" class="hover:underline font-bold">Fuentes</a></li>
         </ul>
 
+        <!-- Menú móvil -->
+        <ul id="menu-movil" class="hidden md:hidden px-6 pb-4 flex-col gap-3 text-sm">
+          <li><a href="index.html" class="hover:underline font-bold">Inicio</a></li>
+          <li><a href="eventos.html" class="hover:underline font-bold">Eventos</a></li>
+          <li><a href="historial.html" class="nav-link-activo">Historial</a></li>
+          <li><a href="about-us.html" class="hover:underline font-bold">About Us</a></li>
+          <li><a href="contacto.html" class="hover:underline font-bold">Contacto</a></li>
+          <li><a href="fuentes.html" class="hover:underline font-bold">Fuentes</a></li>
+        </ul>
+
       </div>
     </nav>
-
-    <!-- Menú móvil -->
-    <ul id="menu-movil" class="hidden bg-corp-pink text-white px-6 pb-4 pt-2 flex-col gap-3 text-sm list-none md:hidden">
-      <li><a href="index.html" class="hover:underline font-bold">Inicio</a></li>
-      <li><a href="eventos.html" class="hover:underline font-bold">Eventos</a></li>
-      <li><a href="historial.html" class="nav-link-activo">Historial</a></li>
-      <li><a href="about-us.html" class="hover:underline font-bold">About Us</a></li>
-      <li><a href="contacto.html" class="hover:underline font-bold">Contacto</a></li>
-      <li><a href="fuentes.html" class="hover:underline font-bold">Fuentes</a></li>
-    </ul>
 
 
     <!-- CONTENIDO PRINCIPAL -->
     <main class="max-w-7xl mx-auto px-6 py-10">
-
-      <!-- Botón volver, usa el historial del navegador -->
-      <button onclick="history.back()" class="flex items-center gap-2 text-sm text-gray-500 hover:text-corp-pink transition-colors mb-6">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-        </svg>
-        Volver
-      </button>
-
-      <!-- Layout: contenido izquierda + sidebar derecha -->
       <div class="flex flex-col lg:flex-row gap-10">
 
-
-        <!-- ---- COLUMNA IZQUIERDA: CONTENIDO DEL EVENTO ---- -->
-        <article class="flex-1">
-
-          <!-- Imagen de portada del evento -->
-          <div class="rounded-2xl overflow-hidden mb-6 h-72 lg:h-96">
-            <img
-              src="assets/images/cartel-karol.jpg"
-              alt="Mañana Será Bonito Tour — Karol G"
-              class="w-full h-full object-cover"
-            />
+        <!-- ---- HISTORIAL DE EVENTOS ---- -->
+        <section class="flex-1">
+          <div class="mb-6">
+            <h2 class="text-sm font-bold text-gray-400 uppercase tracking-widest">
+              Historial de eventos</h2>
           </div>
 
-          <!-- Etiquetas: categoría y estado del evento -->
-          <div class="flex gap-2 mb-3">
-            <!-- Categoría del evento -->
-            <p class="hero-etiqueta etiqueta-pink">Música</p>
-            <!-- Estado: evento pasado porque es anterior al 01-05-2026 -->
-            <p class="hero-etiqueta" style="background-color: #e5e7eb; color: #555555;">Evento pasado</p>
+          <!-- Grid de cards — 1 columna en móvil y 3 en desktop -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+
+            <!-- Card: Karol G -->
+            <article class="card-evento bg-white rounded-xl border border-corp-pink overflow-hidden">
+              <div class="relative h-44 overflow-hidden">
+                <img
+                  src="assets/images/cartel-karol.jpg"
+                  alt="Mañana Será Bonito Tour — Karol G"
+                  class="card-imagen"
+                />
+                <p class="card-etiqueta etiqueta-pink text-white">Música</p>
+                <div class="absolute bottom-0 left-0 right-0 h-1 barra-pink"></div>
+              </div>
+              <div class="p-4">
+                <p class="text-xs text-gray-400 font-medium mb-1">25 ago 2025</p>
+                <h3 class="text-sm font-semibold text-gray-800 leading-snug mb-1">
+                  Mañana Será Bonito Tour - Karol G
+                </h3>
+                <p class="text-xs text-gray-500 leading-relaxed mb-3">
+                  Karol G llenó el Santiago Bernabéu con su gira mundial.
+                </p>
+                <a href="karolg.html" class="inline-block bg-corp-pink text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:scale-105 transition-transform uppercase tracking-wider">
+                  Ver evento ➜
+                </a>
+              </div>
+            </article>
+
+            <!-- Card: Prisión IA -->
+            <article class="card-evento bg-white rounded-xl border border-corp-blue overflow-hidden">
+              <div class="relative h-44 overflow-hidden">
+                <img
+                  src="assets/images/cartel2-prison.webp"
+                  alt="Prisión IA — El Circo de los Horrores"
+                  class="card-imagen"
+                />
+                <p class="card-etiqueta etiqueta-blue text-white">Teatro</p>
+                <div class="absolute bottom-0 left-0 right-0 h-1 barra-blue"></div>
+              </div>
+              <div class="p-4">
+                <p class="text-xs text-gray-400 font-medium mb-1">12 ene 2026</p>
+                <h3 class="text-sm font-semibold text-gray-800 leading-snug mb-1">
+                  Prision IA - El Circo de los Horrores
+                </h3>
+                <p class="text-xs text-gray-500 leading-relaxed mb-3">
+                  Teatro e inteligencia artificial se fusionan en un espectáculo único.
+                </p>
+                <a href="prision-ia.html" class="inline-block bg-corp-blue text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:scale-105 transition-transform uppercase tracking-wider">
+                  Ver evento ➜
+                </a>
+              </div>
+            </article>
+
+            <!-- Card: Final Four -->
+            <article class="card-evento bg-white rounded-xl border border-corp-gray overflow-hidden">
+              <div class="relative h-44 overflow-hidden">
+                <img
+                  src="assets/images/cartel-final-four.jpeg"
+                  alt="Final Four Basketball Champions League"
+                  class="card-imagen"
+                />
+                <p class="card-etiqueta etiqueta-gray text-white">Deporte</p>
+                <div class="absolute bottom-0 left-0 right-0 h-1 barra-gray"></div>
+              </div>
+              <div class="p-4">
+                <p class="text-xs text-gray-400 font-medium mb-1">24 ene 2026</p>
+                <h3 class="text-sm font-semibold text-gray-800 leading-snug mb-1">
+                  Final Four - Basketball Champions League
+                </h3>
+                <p class="text-xs text-gray-500 leading-relaxed mb-3">
+                  Cuatro equipos lucharon por el título continental en Badalona.
+                </p>
+                <a href="finalfour.html" class="inline-block bg-corp-gray text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:scale-105 transition-transform uppercase tracking-wider">
+                  Ver evento ➜
+                </a>
+              </div>
+            </article>
+
+            <!-- Card: The Tile Project -->
+            <article class="card-evento bg-white rounded-xl border border-corp-orange overflow-hidden">
+              <div class="relative h-44 overflow-hidden">
+                <img
+                  src="assets/images/cartel-azulejos.png"
+                  alt="The Tile Project — Azulejos, Vaques y el Nano"
+                  class="card-imagen"
+                />
+                <p class="card-etiqueta etiqueta-orange text-white">Exposición</p>
+                <div class="absolute bottom-0 left-0 right-0 h-1 barra-orange"></div>
+              </div>
+              <div class="p-4">
+                <p class="text-xs text-gray-400 font-medium mb-1">01 ene 2026</p>
+                <h3 class="text-sm font-semibold text-gray-800 leading-snug mb-1">
+                  The Tile Project - Azulejos, Vaques y el Nano
+                </h3>
+                <p class="text-xs text-gray-500 leading-relaxed mb-3">
+                  Exposición musical y visual de las artistas asturianas.
+                </p>
+                <a href="tileproject.html" class="inline-block bg-corp-orange text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:scale-105 transition-transform uppercase tracking-wider">
+                  Ver evento ➜
+                </a>
+              </div>
+            </article>
+
           </div>
-
-          <!-- Título del evento -->
-          <h2 class="text-3xl font-bold text-gray-900 mb-4 uppercase">
-            Mañana Será Bonito Tour - Karol G
-          </h2>
-
-          <!-- Fecha y lugar -->
-          <div class="flex flex-col sm:flex-row gap-4 text-sm text-gray-500 mb-6">
-            <p>📅 25 de Agosto de 2025</p>
-            <p>📍 Santiago Bernabéu, Madrid</p>
-          </div>
-
-          <!-- Descripción del evento -->
-          <p class="text-gray-600 leading-relaxed mb-10">
-            La superestrella colombiana Karol G llegó al Santiago Bernabéu con su gira mundial
-            Mañana Será Bonito Tour, uno de los espectáculos más grandes de la música latina de
-            los últimos años. Una noche inolvidable llena de energía, color y los mejores éxitos
-            de la artista, más de ochenta mil personas llenaron el estadio y gritaron sus canciones con todas las fuerzas.
-            Un hito histórico para una mujer en el género urbano.
-          </p>
-
-          <!-- ---- GALERÍA DE IMÁGENES ---- -->
-          <!-- Solo se muestra en eventos pasados (anteriores al 01-05-2026) -->
-          <section aria-label="Galería del evento">
-
-            <h3 class="text-lg font-bold text-gray-800 mb-4 uppercase tracking-widest">Galería del evento</h3>
-
-            <!-- Grid de 5 imágenes: 2 columnas en móvil, 3 en desktop -->
-            <div class="grid grid-cols-2 lg:grid-cols-3 gap-3">
-
-              <!-- Foto 1 -->
-              <div class="rounded-xl overflow-hidden h-44">
-                <img
-                  src="assets/images/galerias-historial/galeria-karolg/bichota.webp"
-                  alt="Bichota — Karol G"
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 "
-                  style="object-position: center 80%;"
-                />
-              </div>
-
-              <!-- Foto 2 -->
-              <div class="rounded-xl overflow-hidden h-44">
-                <img
-                  src="assets/images/galerias-historial/galeria-karolg/escenario.webp"
-                  alt="Escenario — Karol G"
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  style="object-position: center 42%;"
-                />
-              </div>
-
-              <!-- Foto 3 -->
-              <div class="rounded-xl overflow-hidden h-44">
-                <img
-                  src="assets/images/galerias-historial/galeria-karolg/karol.webp"
-                  alt="Karol G en concierto"
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  style="object-position: center 40%;"
-                />
-              </div>
-
-              <!-- Foto 4 -->
-              <div class="rounded-xl overflow-hidden h-44">
-                <img
-                  src="assets/images/galerias-historial/galeria-karolg/espacial.webp"
-                  alt="Momento espacial — Karol G"
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-
-              <!-- Foto 5 -->
-              <div class="rounded-xl overflow-hidden h-44">
-                <img
-                  src="assets/images/galerias-historial/galeria-karolg/karol2.webp"
-                  alt="Karol G — Mañana Será Bonito Tour"
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  style="object-position: center 60%;"
-                />
-              </div>
-
-            </div>
-          </section>
-
-        </article>
+        </section>
 
 
-        <!-- ---- SIDEBAR: RECOMENDADOS ---- -->
-        <!-- Igual que en index.html -->
+        <!-- ---- SIDEBAR: RECOMENDADOS (eventos futuros) ---- -->
         <aside class="w-full lg:w-64 flex-shrink-0 bg-corp-pink/10 rounded-3xl p-7 self-start sticky top-24 pl-7 mr-0">
 
           <div class="flex flex-col border border-corp-pink rounded-[40px] p-6 max-w-[200px] bg-gray-100/80">
@@ -211,15 +209,13 @@
               Recomendados
             </h2>
 
+            <!-- Línea horizontal separadora rosa -->
             <div class="flex flex-col divide-y divide-corp-pink">
 
               <!-- Recomendado: Anastacia -->
               <a href="anastacia.html" class="flex gap-3 group items-center pb-4">
-                <img
-                  src="assets/images/anastascia.png"
-                  alt="Anastacia Tour"
-                  class="w-14 h-14 rounded-lg object-cover flex-shrink-0"
-                />
+                <img src="assets/images/anastascia.png" alt="Anastacia Tour"
+                  class="w-14 h-14 rounded-lg object-cover flex-shrink-0"/>
                 <div class="flex flex-col">
                   <p class="text-xs text-gray-400 font-medium mb-1">24 oct 2026</p>
                   <p class="text-xs font-semibold text-gray-700 group-hover:text-corp-pink transition-colors leading-snug">
@@ -228,32 +224,26 @@
                 </div>
               </a>
 
-              <!-- Recomendado: The Tile Project -->
-              <a href="tileproject.html" class="flex gap-3 group items-center py-4">
-                <img
-                  src="assets/images/tile-portada.png"
-                  alt="The Tile Project"
-                  class="w-14 h-14 rounded-lg object-cover flex-shrink-0"
-                />
+              <!-- Recomendado: Hannah Montana -->
+              <a href="hannah.html" class="flex gap-3 group items-center py-4">
+                <img src="assets/images/cartel-han.jpg" alt="Hannah Montana 20 Aniversario"
+                  class="w-14 h-14 rounded-lg object-cover flex-shrink-0"/>
                 <div class="flex flex-col">
-                  <p class="text-xs text-gray-400 font-medium mb-1">01 ene 2026</p>
+                  <p class="text-xs text-gray-400 font-medium mb-1">15 jun 2026</p>
                   <p class="text-xs font-semibold text-gray-700 group-hover:text-corp-pink transition-colors leading-snug">
-                    The Tile Project
+                    Hannah Montana
                   </p>
                 </div>
               </a>
 
-              <!-- Recomendado: Final Four -->
-              <a href="finalfour.html" class="flex gap-3 group items-center pt-4">
-                <img
-                  src="assets/images/cartel-final.avif"
-                  alt="Final Four BCL"
-                  class="w-14 h-14 rounded-lg object-cover flex-shrink-0"
-                />
+              <!-- Recomendado: Salmon Trail -->
+              <a href="salmon.html" class="flex gap-3 group items-center pt-4">
+                <img src="assets/images/logo-salmon.jpg" alt="Salmon Trail Cornellana"
+                  class="w-14 h-14 rounded-lg object-cover flex-shrink-0"/>
                 <div class="flex flex-col">
-                  <p class="text-xs text-gray-400 font-medium mb-1">24 ene 2026</p>
+                  <p class="text-xs text-gray-400 font-medium mb-1">25 jun 2026</p>
                   <p class="text-xs font-semibold text-gray-700 group-hover:text-corp-pink transition-colors leading-snug">
-                    Final Four BCL
+                    Salmon Trail
                   </p>
                 </div>
               </a>
@@ -314,7 +304,7 @@
     </footer>
 
 
-    <!-- JavaScript -->
+    <!-- JAVASCRIPT -->
     <!-- Menú hamburguesa móvil -->
     <script>
       document.getElementById("menu-boton").addEventListener("click", function () {

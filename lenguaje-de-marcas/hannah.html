@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mañana Será Bonito Tour — Karol G · Happiness &amp; Co</title>
+    <title>Hannah Montana 20 Aniversario · Happiness &amp; Co</title>
     <meta
       name="description"
-      content="Mañana Será Bonito Tour — Karol G. Concierto en el Santiago Bernabéu, Madrid."
+      content="Hannah Montana 20 Aniversario. Disney+."
     />
     <!-- Estilos propios -->
     <link rel="stylesheet" href="assets/css/styles.css" />
@@ -18,10 +18,10 @@
         theme: {
           extend: {
             colors: {
-              "corp-pink":   "#ba007c",
-              "corp-blue":   "#009bdb",
+              "corp-pink": "#ba007c",
+              "corp-blue": "#009bdb",
               "corp-orange": "#ff7b00",
-              "corp-gray":   "#555555",
+              "corp-gray": "#555555",
             },
             fontFamily: {
               sans: ["Montserrat", "sans-serif"],
@@ -61,8 +61,8 @@
         <!-- Menú desktop -->
         <ul id="menu-desktop" class="hidden md:flex items-center gap-6 text-sm list-none">
           <li><a href="index.html" class="hover:underline font-bold">Inicio</a></li>
-          <li><a href="eventos.html" class="hover:underline font-bold">Eventos</a></li>
-          <li><a href="historial.html" class="nav-link-activo">Historial</a></li>
+          <li><a href="eventos.html" class="nav-link-activo">Eventos</a></li>
+          <li><a href="historial.html" class="hover:underline font-bold">Historial</a></li>
           <li><a href="about-us.html" class="hover:underline font-bold">About Us</a></li>
           <li><a href="contacto.html" class="hover:underline font-bold">Contacto</a></li>
           <li><a href="fuentes.html" class="hover:underline font-bold">Fuentes</a></li>
@@ -74,8 +74,8 @@
     <!-- Menú móvil -->
     <ul id="menu-movil" class="hidden bg-corp-pink text-white px-6 pb-4 pt-2 flex-col gap-3 text-sm list-none md:hidden">
       <li><a href="index.html" class="hover:underline font-bold">Inicio</a></li>
-      <li><a href="eventos.html" class="hover:underline font-bold">Eventos</a></li>
-      <li><a href="historial.html" class="nav-link-activo">Historial</a></li>
+      <li><a href="eventos.html" class="nav-link-activo">Eventos</a></li>
+      <li><a href="historial.html" class="hover:underline font-bold">Historial</a></li>
       <li><a href="about-us.html" class="hover:underline font-bold">About Us</a></li>
       <li><a href="contacto.html" class="hover:underline font-bold">Contacto</a></li>
       <li><a href="fuentes.html" class="hover:underline font-bold">Fuentes</a></li>
@@ -103,100 +103,38 @@
           <!-- Imagen de portada del evento -->
           <div class="rounded-2xl overflow-hidden mb-6 h-72 lg:h-96">
             <img
-              src="assets/images/cartel-karol.jpg"
-              alt="Mañana Será Bonito Tour — Karol G"
-              class="w-full h-full object-cover"
+              src="assets/images/cartel-hannah.webp"
+              alt="Hannah Montana 20 Aniversario"
+              class="w-full h-full object-contain"
             />
           </div>
 
           <!-- Etiquetas: categoría y estado del evento -->
           <div class="flex gap-2 mb-3">
             <!-- Categoría del evento -->
-            <p class="hero-etiqueta etiqueta-pink">Música</p>
-            <!-- Estado: evento pasado porque es anterior al 01-05-2026 -->
-            <p class="hero-etiqueta" style="background-color: #e5e7eb; color: #555555;">Evento pasado</p>
+            <p class="hero-etiqueta etiqueta-blue">Cine</p>
+            <!-- Estado: evento futuro porque es posterior al 01-05-2026 -->
+            <p class="hero-etiqueta" style="background-color: #dcfce7; color: #16a34a;">Evento próximo</p>
           </div>
 
           <!-- Título del evento -->
           <h2 class="text-3xl font-bold text-gray-900 mb-4 uppercase">
-            Mañana Será Bonito Tour - Karol G
+            Hannah Montana - 20 Aniversario
           </h2>
 
           <!-- Fecha y lugar -->
           <div class="flex flex-col sm:flex-row gap-4 text-sm text-gray-500 mb-6">
-            <p>📅 25 de Agosto de 2025</p>
-            <p>📍 Santiago Bernabéu, Madrid</p>
+            <p>📅 15 de Junio de 2026</p>
+            <p>📍 Disney+</p>
           </div>
 
           <!-- Descripción del evento -->
           <p class="text-gray-600 leading-relaxed mb-10">
-            La superestrella colombiana Karol G llegó al Santiago Bernabéu con su gira mundial
-            Mañana Será Bonito Tour, uno de los espectáculos más grandes de la música latina de
-            los últimos años. Una noche inolvidable llena de energía, color y los mejores éxitos
-            de la artista, más de ochenta mil personas llenaron el estadio y gritaron sus canciones con todas las fuerzas.
-            Un hito histórico para una mujer en el género urbano.
+            Disney+ estrena un especial de aniversario para celebrar los veinte años de Hannah Montana, 
+            la serie que marcó a toda una generación. El especial repasará los momentos más memorables de la serie, con imágenes de archivo, 
+            curiosidades del rodaje y reencuentros del reparto original. Una producción cargada de nostalgia que hará las delicias de quiénes crecieron "living the best of both worlds" 
+            y que demuestra que algunas historias nunca pasan de moda.
           </p>
-
-          <!-- ---- GALERÍA DE IMÁGENES ---- -->
-          <!-- Solo se muestra en eventos pasados (anteriores al 01-05-2026) -->
-          <section aria-label="Galería del evento">
-
-            <h3 class="text-lg font-bold text-gray-800 mb-4 uppercase tracking-widest">Galería del evento</h3>
-
-            <!-- Grid de 5 imágenes: 2 columnas en móvil, 3 en desktop -->
-            <div class="grid grid-cols-2 lg:grid-cols-3 gap-3">
-
-              <!-- Foto 1 -->
-              <div class="rounded-xl overflow-hidden h-44">
-                <img
-                  src="assets/images/galerias-historial/galeria-karolg/bichota.webp"
-                  alt="Bichota — Karol G"
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 "
-                  style="object-position: center 80%;"
-                />
-              </div>
-
-              <!-- Foto 2 -->
-              <div class="rounded-xl overflow-hidden h-44">
-                <img
-                  src="assets/images/galerias-historial/galeria-karolg/escenario.webp"
-                  alt="Escenario — Karol G"
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  style="object-position: center 42%;"
-                />
-              </div>
-
-              <!-- Foto 3 -->
-              <div class="rounded-xl overflow-hidden h-44">
-                <img
-                  src="assets/images/galerias-historial/galeria-karolg/karol.webp"
-                  alt="Karol G en concierto"
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  style="object-position: center 40%;"
-                />
-              </div>
-
-              <!-- Foto 4 -->
-              <div class="rounded-xl overflow-hidden h-44">
-                <img
-                  src="assets/images/galerias-historial/galeria-karolg/espacial.webp"
-                  alt="Momento espacial — Karol G"
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-
-              <!-- Foto 5 -->
-              <div class="rounded-xl overflow-hidden h-44">
-                <img
-                  src="assets/images/galerias-historial/galeria-karolg/karol2.webp"
-                  alt="Karol G — Mañana Será Bonito Tour"
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  style="object-position: center 60%;"
-                />
-              </div>
-
-            </div>
-          </section>
 
         </article>
 

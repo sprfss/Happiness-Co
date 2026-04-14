@@ -165,10 +165,10 @@ body {
 }
 
 /* Barras de color inferior según categoría */
-.barra-pink    { background-color: #ba007c; }
-.barra-blue   { background-color: #009bdb; }
+.barra-pink { background-color: #ba007c; }
+.barra-blue { background-color: #009bdb; }
 .barra-orange { background-color: #ff7b00; }
-.barra-gray    { background-color: #555555; }
+.barra-gray { background-color: #555555; }
 
 /* Ajustes de la etiqueta de categoría dentro de la card */
 .card-etiqueta {
@@ -200,9 +200,25 @@ body {
 
 /* 6. FORMULARIO DE CONTACTO */
 
+.campo-formulario {
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  font-size: 0.875rem;
+  font-family: 'Montserrat', sans-serif;
+  outline: none;
+  background-color: white;
+  color: #374151;
+}
+
 .campo-formulario:focus {
   outline: none;
   border-color: #ba007c;
   box-shadow: 0 0 0 3px rgba(186,0,124,0.1);
+  border: 1px solid #e5e7eb;
+  border-radius: 15px;
+  padding: 0.6rem 1rem;
+  
 }
 

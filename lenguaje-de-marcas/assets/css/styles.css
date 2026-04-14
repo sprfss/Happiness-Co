@@ -197,8 +197,18 @@ body {
   transform: scale(1.02);
 }
 
+/* 6. BOTONES FILTROS CATEGORÍA */
+.boton-filtro {
+  padding: 6px 16px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: white;
+  transition: all 0.2s ease;
+}
 
-/* 6. FORMULARIO DE CONTACTO */
+/* 7. FORMULARIO DE CONTACTO */
 
 .campo-formulario {
   width: 100%;

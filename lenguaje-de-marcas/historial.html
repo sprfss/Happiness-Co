@@ -93,11 +93,22 @@
               Historial de eventos</h2>
           </div>
 
+           <!-- Botones de filtro -->
+           <div class="flex flex-wrap gap-2 mb-6">
+             <button data-filtro="todos"      data-color="gray-400"    class="boton-filtro border border-gray-400 text-gray-400 hover:bg-gray-400 hover:text-white activo">Todos</button>
+             <button data-filtro="exposicion" data-color="corp-orange" class="boton-filtro border border-corp-orange text-corp-orange hover:bg-corp-orange hover:text-white">Exposición</button>
+             <button data-filtro="teatro" data-color="corp-blue" class="boton-filtro border border-corp-blue text-corp-blue hover:bg-corp-blue hover:text-white">Teatro</button>
+             <button data-filtro="cine" data-color="corp-blue" class="boton-filtro border border-corp-blue text-corp-blue hover:bg-corp-blue hover:text-white">Cine</button>
+             <button data-filtro="deporte" data-color="corp-gray" class="boton-filtro border border-corp-gray text-corp-gray hover:bg-corp-gray hover:text-white">Deporte</button>
+             <button data-filtro="musica" data-color="corp-pink" class="boton-filtro border border-corp-pink text-corp-pink hover:bg-corp-pink hover:text-white">Música</button>
+
+            </div>
+
           <!-- Grid de cards — 1 columna en móvil y 3 en desktop -->
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
 
             <!-- Card: Karol G -->
-            <article class="card-evento bg-white rounded-xl border border-corp-pink overflow-hidden">
+            <article data-categoria="musica" class="card-evento bg-white rounded-xl border border-corp-pink overflow-hidden">
               <div class="relative h-44 overflow-hidden">
                 <img
                   src="assets/images/cartel-karol.jpg"
@@ -122,7 +133,7 @@
             </article>
 
             <!-- Card: Prisión IA -->
-            <article class="card-evento bg-white rounded-xl border border-corp-blue overflow-hidden">
+            <article data-categoria="teatro" class="card-evento bg-white rounded-xl border border-corp-blue overflow-hidden">
               <div class="relative h-44 overflow-hidden">
                 <img
                   src="assets/images/cartel2-prison.webp"
@@ -147,7 +158,7 @@
             </article>
 
             <!-- Card: Final Four -->
-            <article class="card-evento bg-white rounded-xl border border-corp-gray overflow-hidden">
+            <article data-categoria="deporte" class="card-evento bg-white rounded-xl border border-corp-gray overflow-hidden">
               <div class="relative h-44 overflow-hidden">
                 <img
                   src="assets/images/cartel-final-four.jpeg"
@@ -172,7 +183,7 @@
             </article>
 
             <!-- Card: The Tile Project -->
-            <article class="card-evento bg-white rounded-xl border border-corp-orange overflow-hidden">
+            <article data-categoria="exposicion" class="card-evento bg-white rounded-xl border border-corp-orange overflow-hidden">
               <div class="relative h-44 overflow-hidden">
                 <img
                   src="assets/images/cartel-azulejos.png"
@@ -311,6 +322,47 @@
         document.getElementById("menu-movil").classList.toggle("hidden");
       });
     </script>
+
+     <!-- Filtro de categorías -->
+    <script>
+    const botones = document.querySelectorAll('.boton-filtro');
+    const cards = document.querySelectorAll('[data-categoria]');
+
+    /* Activa el botón "Todos" al cargar la página */
+    activarBoton(document.querySelector('[data-filtro="todos"]'));
+
+    botones.forEach(function (boton) {
+      boton.addEventListener('click', function () {
+
+        /* Desactivamos todos los botones */
+        botones.forEach(function (b) {
+          const color = b.getAttribute('data-color');
+          b.classList.remove('bg-' + color, 'text-white');
+          b.classList.add('text-' + color);
+        });
+
+        /* Activamos el botón pulsado */
+        activarBoton(boton);
+
+        /* Filtramos las cards */
+        const filtro = boton.getAttribute('data-filtro');
+        cards.forEach(function (card) {
+          if (filtro === 'todos' || card.getAttribute('data-categoria') === filtro) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    /* Función que aplica el estilo activo a un botón */
+    function activarBoton(boton) {
+      const color = boton.getAttribute('data-color');
+      boton.classList.remove('text-' + color);
+      boton.classList.add('bg-' + color, 'text-white');
+    }
+  </script>
 
   </body>
 </html>

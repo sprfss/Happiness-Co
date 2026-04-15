@@ -154,7 +154,9 @@ El archivo `informe.pdf` documenta todas las partes del proyecto con capturas de
 
 ---
 
-## **👩🏻‍💻**Autora**Sara Pérez Rodríguez**
+## **👩🏻‍💻 **Autora****
+
+Sara Pérez Rodríguez
 
 FP Superior DAW — 2025/2026
 [github.com/sprfss](https://github.com/sprfss)

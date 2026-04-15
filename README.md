@@ -80,12 +80,12 @@ Happiness-Co/
 
 ### Colores corporativos
 
-| Categoría    | Color   | Hex                                                                                                  |
-| ------------- | ------- | ---------------------------------------------------------------------------------------------------- |
-| Música       | Rosa    | **!**[**#ba007c**](**https://placehold.co/15x15/ba007c/ba007c.png**)**`#ba007c`**  |
-| Cine / Teatro | Azul    | **!**[**#009bdb**](**https://placehold.co/15x15/009bdb/009bdb.png**)**`#009bdb`**   |
-| Exposiciones  | Naranja | **!**[**#ff7b00**](**https://placehold.co/15x15/ff7b00/ff7b00.png**)**`#ff7b00`**  |
-| Deporte       | Gris    | **!**[**#555555**](**https://placehold.co/15x15/555555/555555.png**)**`#555555`**  |
+| Categoría    | Color   | Hex                                                                                   |
+| ------------- | ------- | ------------------------------------------------------------------------------------- |
+| Música       | Rosa    | ![](https://img.shields.io/badge/COLOR-%23ba007c?style=for-the-badge&color=ba007c)      |
+| Cine / Teatro | Azul    | ![Color](https://img.shields.io/badge/COLOR-%23ba007c?style=for-the-badge&color=009bdb) |
+| Exposiciones  | Naranja | ![Color](https://img.shields.io/badge/COLOR-%23ba007c?style=for-the-badge&color=ff7b00) |
+| Deporte       | Gris    | ![Color](https://img.shields.io/badge/COLOR-%23ba007c?style=for-the-badge&color=555555) |
 
 ### Tipografía
 

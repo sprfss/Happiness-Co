@@ -1,7 +1,6 @@
 <p align="center">
-  <img src="./lenguaje-de-marcas/assets/images/logo/logo-fondo-rosa.jpg" width="100%">
+  <img src="./lenguaje-de-marcas/assets/images/logo/logo-rosa.jpg" width="100%">
 </p>
-
 
 ## **HAPPINESS&Co 🎭🎵**
 

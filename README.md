@@ -60,7 +60,7 @@ Happiness-Co/
 
 ---
 
-## 🌐 Lenguaje de marcas
+## **🔖**Lenguaje de marcas
 
 ### Stack tecnológico
 
@@ -80,12 +80,12 @@ Happiness-Co/
 
 ### Colores corporativos
 
-| Categoría    | Color   | Hex         |
-| ------------- | ------- | ----------- |
-| Música       | Rosa    | `#ba007c` |
-| Cine / Teatro | Azul    | `#009bdb` |
-| Exposiciones  | Naranja | `#ff7b00` |
-| Deporte       | Gris    | `#555555` |
+| Categoría    | Color   | Hex                                                                                                  |
+| ------------- | ------- | ---------------------------------------------------------------------------------------------------- |
+| Música       | Rosa    | **!**[**#ba007c**](**https://placehold.co/15x15/ba007c/ba007c.png**)**`#ba007c`**  |
+| Cine / Teatro | Azul    | **!**[**#009bdb**](**https://placehold.co/15x15/009bdb/009bdb.png**)**`#009bdb`**   |
+| Exposiciones  | Naranja | **!**[**#ff7b00**](**https://placehold.co/15x15/ff7b00/ff7b00.png**)**`#ff7b00`**  |
+| Deporte       | Gris    | **!**[**#555555**](**https://placehold.co/15x15/555555/555555.png**)**`#555555`**  |
 
 ### Tipografía
 
@@ -108,7 +108,7 @@ Feed RSS con los próximos eventos de la página `eventos.html`:
 
 ---
 
-## 🗄️ Base de datos
+## **🗃️**Base de datos
 
 Base de datos SQL con las siguientes tablas y relaciones:
 
@@ -129,7 +129,7 @@ Base de datos SQL con las siguientes tablas y relaciones:
 
 ---
 
-## ☕ Programación
+## **☕**Programación
 
 Clases Java con constructor, getters, setters y toString:
 
@@ -154,8 +154,7 @@ El archivo `informe.pdf` documenta todas las partes del proyecto con capturas de
 
 ---
 
-## 👤 Autora
+## **👩🏻‍💻**Autora**Sara Pérez Rodríguez**
 
-**Sara Pérez Rodríguez**
 FP Superior DAW — 2025/2026
 [github.com/sprfss](https://github.com/sprfss)

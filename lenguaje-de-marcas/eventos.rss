@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+
+  <channel>
+
+    <!-- CANAL RSS -->
+    <!-- Título del sitio web -->
+    <title>Happiness &amp; Co - Próximos eventos</title>
+    <!-- URL del sitio web -->
+    <link>https://sprfss.github.io/Happiness-Co</link>
+    <!-- Descripción del feed -->
+    <description>Agenda cultural de eventos de música, teatro, exposiciones y deporte</description>
+    <!-- Idioma del feed -->
+    <language>es-es</language>
+
+    <!-- ITEMS -->
+       <!-- CLEOPATRA  -->
+    <item>
+
+      <!-- Título del evento -->
+      <title>Cleopatra, la exposición inmersiva</title>
+      <!-- Enlace a la página del evento -->
+      <link>https://sprfss.github.io/Happiness-Co/cleopatra.html</link>
+      <!-- Descripción del evento -->
+      <description>
+        Viaje multisensorial al Antiguo Egipto con proyecciones de 360 grados, efectos de
+        sonido envolventes y escenografías espectaculares. Una experiencia única que combina
+        arte, tecnología y cultura.
+      </description>
+      <!-- Categoría del evento -->
+      <category>Exposición</category>
+      <!-- Fecha de publicación en el feed -->
+      <pubDate>Fri, 05 Jun 2026 07:00:00 +0000</pubDate>
+      <!-- Identificador único del item -->
+    
+
+    </item>
+
+
+    <!-- HANNAH MONTANA-->
+    <item>
+
+      <title>Hannah Montana 20 Aniversario</title>
+      <link>https://sprfss.github.io/Happiness-Co/hannah.html</link>
+      <description>
+        Disney+ estrena un especial de aniversario para celebrar los veinte años de Hannah Montana.
+        El especial repasará los momentos más memorables de la serie con imágenes de archivo,
+        curiosidades del rodaje y reencuentros del reparto original.
+      </description>
+      <category>Cine</category>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+    
+
+    </item>
+
+
+    <!-- SALMON TRAIL -->
+    <item>
+
+      <title>Salmon Trail Cornellana</title>
+      <link>https://sprfss.github.io/Happiness-Co/salmon.html</link>
+      <description>
+        El Salmon Trail regresa a Cornellana para una nueva edición de la carrera de montaña
+        más querida de Asturias. El recorrido discurre por los senderos del concejo de Salas,
+        entre bosques de ribera, aldeas tradicionales y el paisaje verde del interior asturiano.
+      </description>
+      <category>Deporte</category>
+      <pubDate>Thu, 25 Jun 2026 09:00:00 +0000</pubDate>
+    
+
+    </item>
+
+
+    <!--  ANASTACIA #NTKTOUR2026  -->
+    <item>
+      
+      <title>#NTKTOUR2026 - Anastacia</title>
+      <link>https://sprfss.github.io/Happiness-Co/anastacia.html</link>
+      <description>
+        Anastacia regresa a los escenarios españoles con su gira #NTKTOUR2026. La artista americana
+        llega al Gijón Arena para ofrecer una noche inolvidable con sus canciones más icónicas.
+        Una voz única, una presencia arrolladora y un show diseñado para emocionar de principio a fin.
+      </description>
+      <category>Música</category>
+      <pubDate>Sat, 24 Oct 2026 21:00:00 +0000</pubDate>
+      
+    </item>
+
+
+  </channel>
+
+</rss>

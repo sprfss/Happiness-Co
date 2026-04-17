@@ -1,0 +1,234 @@
+/* 1. TIPOGRAFÍA */
+
+/* Importo tipografía y grosores*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+/* 2. MENÚ DE NAVEGACIÓN */
+
+/* Enlace activo del nav */
+.nav-link-activo {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+
+/* 3. HERO: SECCIÓN PRINCIPAL CON IMAGEN DE FONDO */
+
+/* Ajustes del contenedor principal del hero donde ira la imagen y demás elementos */
+.hero {
+  background-color: #0c0c1d;
+  position: relative;
+  overflow: hidden;
+  min-height: 550px;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+}
+
+/* Ajustes de la imagen de fondo rotatoria */
+.hero-imagen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  opacity: 0.60;
+}
+
+/* Degradado oscuro abajo para que el texto sea legible */
+.hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+  z-index: 1;
+}
+
+/* Contenido del hero: etiqueta categoria, titulo, fecha y botón ver evento*/
+.hero-contenido {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+/* Transición de aparición del contenido del hero */
+.hero-contenido {
+  animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ajustes etiqueta genérica (música, exposición...) */
+.hero-etiqueta {
+  display: inline-block;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+/* Colores de las etiquetas según categoría */
+.etiqueta-pink { 
+  background-color: #ba007c;
+}
+.etiqueta-blue {
+   background-color: #009bdb;
+  }
+.etiqueta-orange { 
+  background-color: #ff7b00;
+}
+.etiqueta-gray { 
+  background-color: #555555;
+}
+
+/* Puntos indicadores del carrusel */
+.hero-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.4);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Punto en el que te encuentras del carrusel */
+.hero-dot.activo {
+  background-color: white;
+}
+
+/* Flechas para moverte por el carrusel */
+.hero-flecha-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: rgba(255,255,255,0.2);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.hero-flecha-nav:hover {
+  background-color: rgba(255,255,255,0.4);
+}
+
+
+/* 4. CARDS DE EVENTOS */
+
+/* Animación al pasar el ratón */
+.card-evento {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-evento:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+/* Imagen dentro de la card */
+.card-imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Barras de color inferior según categoría */
+.barra-pink { background-color: #ba007c; }
+.barra-blue { background-color: #009bdb; }
+.barra-orange { background-color: #ff7b00; }
+.barra-gray { background-color: #555555; }
+
+/* Ajustes de la etiqueta de categoría dentro de la card */
+.card-etiqueta {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+/* 5. GALERÍA DE IMÁGENES — Eventos pasados */
+
+.galeria-imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.galeria-imagen:hover {
+  transform: scale(1.02);
+}
+
+/* 6. BOTONES FILTROS CATEGORÍA */
+.boton-filtro {
+  padding: 6px 16px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: white;
+  transition: all 0.2s ease;
+}
+
+/* 7. FORMULARIO DE CONTACTO */
+
+.campo-formulario {
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  font-size: 0.875rem;
+  font-family: 'Montserrat', sans-serif;
+  outline: none;
+  background-color: white;
+  color: #374151;
+}
+
+.campo-formulario:focus {
+  outline: none;
+  border-color: #ba007c;
+  box-shadow: 0 0 0 3px rgba(186,0,124,0.1);
+  border: 1px solid #e5e7eb;
+  border-radius: 15px;
+  padding: 0.6rem 1rem;
+  
+}
+
